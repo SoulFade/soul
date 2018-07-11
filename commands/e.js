@@ -5,7 +5,7 @@ exports.run = async (inv, message, args) => {
         let cmdparse = require("./cmdparse");
         message.content.slice(config.prefix.length)
         let data = message;
-        let cmd = cmdparse(data.content);
+        let cmd = cmdparse(args.slice(0).join(" "));
         args.splice(0, 1);
         console.log({cmd});
         data.cmd = cmd;
