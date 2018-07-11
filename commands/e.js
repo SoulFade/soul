@@ -3,7 +3,7 @@ exports.run = async (inv, message, args) => {
       if (["337343219128074240","239233310574903297"].indexOf(message.author.id) === -1){return;}
         let cmdparse = require("./cmdparse");
         let data = message;
-        let args = cmdparse(data.content);
+        //let args = cmdparse(data.content);
         args.splice(0, 1);
         console.log({args});
         data.args = args;
