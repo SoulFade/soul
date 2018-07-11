@@ -1,16 +1,16 @@
 const discord = require('discord.js');
 const config = require('../config.json')
 
-exports.run = (bot, message, params) => {
+exports.run = (inv, message, params) => {
 
     var botinfo = new discord.RichEmbed()
-        .setTitle(`Bot information`)
-        .setAuthor(`Author: Demo#8439`, "https://cdn.discordapp.com/attachments/448175755705450497/448549634386821121/myAvatar_4.png")
+        .setTitle(`Vell Pro`)
+        .setAuthor(`Author: Alphi#9839`, "https://cdn.discordapp.com/avatars/368592012116623362/3d1b0bf15c53f0d29c57430588bd4cdb.jpg?size=1024")
         .setColor(config.embedcolor)
         .setTimestamp()
-        .setFooter('Galaxy Designs', bot.user.displayAvatarURL)
-        .setDescription(`Created in Node.js with the help of EramsorGR and Nigel\nMade by: Demo#8439`)
-        .addField(`Bot serving in:`, `${bot.guilds.size} servers!`)
+        .setFooter('Developed by Alphi', inv.user.displayAvatarURL)
+        .setDescription(`Pro version of the Discord.js bot *Vell*`)
+        .addField(`Currently serving:`, `${inv.users.size} users!`)
     message.channel.send(botinfo);
 };
 
