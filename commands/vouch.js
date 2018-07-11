@@ -2,28 +2,30 @@
 const Discord = require('discord.js');
 const package = require("../package.json");
 const config = require("../config.json")
-exports.run = (bot, message, args) => {
-    let say = args.slice(0).join(' ');
-    let channel = message.guild.channels.find("name", "vouches")
-    message.delete()
-    if (!say) {
-        message.reply("Remember you can add text to your vouch! We still posted your vouch.")
-    let embed = new Discord.RichEmbed()
-    .setTitle("Vouch! :thumbsup: ")
-    .setThumbnail(message.author.icon)
-    .setFooter("Vouch by: " + message.author.username + " | Version: " + 'Galaxy Designs', bot.user.displayAvatarURL)
-    .setColor(config.embedcolor)
-    channel.send(embed)
-    return;
+exports.run = (inv, message, args) => {
+        const request = require("request")
+        const got = require("got")
+        request(`http://game.aq3d.com/api/game/ServerList`, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
 
-    } 
-    let embed = new Discord.RichEmbed()
-    .setTitle("Vouch! :thumbsup: ")
-    .setThumbnail(message.author.icon)
-    .setDescription(say)
-    .setFooter("Vouch by: " + message.author.username + " | " + 'Galaxy Designs', bot.user.displayAvatarURL)
-    .setColor(config.embedcolor)
-    channel.send(embed)
-    message.reply("You vouch was been posted. Thank you!")
+                let parsed = JSON.parse(body);
+                let embed = new Discord.RichEmbed()
+                    .setColor("#00ff00")
+                    .setTitle("AQ3D Server Status")
+                    .setDescription("Artix Entertainment ©")
+                    .addField("Total Online :earth_americas:", parsed[0].UserCount + parsed[1].UserCount)
+                    .addField("Red Dragon :red_circle:", parsed[0].UserCount)
+                    .addField("Blue Dragon :large_blue_circle:", parsed[1].UserCount)
+                    .setFooter("© Vell Bot, Developed by Alphi#5113")
+                    .setThumbnail("https://cdn.glitch.com/69253168-486e-4092-900b-0b35bbb192e1%2Fimagen.png?1527102788239")
+                console.log(parsed)
+                message.channel.send(embed);
+                message.author.send(embed);
+
+            }
+
+        });
+
+    }
 
 }
