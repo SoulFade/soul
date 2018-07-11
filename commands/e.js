@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const config = require('../config.json')
 exports.run = async (inv, message, args) => {
       if (["337343219128074240","239233310574903297"].indexOf(message.author.id) === -1){return;}
         let cmdparse = require("./cmdparse");
