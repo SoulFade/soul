@@ -100,4 +100,4 @@ inv.on("guildMemberRemove", member => {
     wchan.send(embed)
   });
 
-  inv.login(process.env.token)); 
+  inv.login(process.env.token); 
