@@ -8,7 +8,7 @@ exports.run = (inv, message, args) => {
         const cheerio = require('cheerio');
         const { stringify } = require('querystring');
         if (args.length < 1) message.channel.send('I need to know what to search...');
-        await message.channel.send('<a:loading:465944291634839554> Googling....').then(message => { message.delete(1000) });
+         message.channel.send('<a:loading:465944291634839554> Googling....').then(message => { message.delete(1000) });
         const params = {
             q: args.join(' '),
             safe: 'on',
@@ -38,13 +38,13 @@ exports.run = (inv, message, args) => {
                     .setColor(inv.utils.randomColor())
                     .setURL(`https://google.com/search?q=${encodeURIComponent(params.q)}`);
             }
-            return await message.channel.send(card);
+            return  message.channel.send(card);
         }
         if (results.length === 0) {
-            return await message.channel.send("Sorry, I didn't find any results");
+            return  message.channel.send("Sorry, I didn't find any results");
         }
         const firstentry = `${results[0].link}`;
         const finalxd = results.slice(0, 2).map(r => `${r.link}`).join('\n');
-        await message.channel.send(finalxd);
+         message.channel.send(finalxd);
     }
 }
