@@ -51,7 +51,7 @@ fs.readdir("./events/", (err, files) => {
     });
   });
 
-bot.on("message", message => {
+inv.on("message", message => {
   if (message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -73,7 +73,7 @@ bot.on("message", message => {
   }
 });
 
-bot.on("guildMemberAdd", member => {
+inv.on("guildMemberAdd", member => {
     let wchan =  member.guild.channels.find("name", "welcome");
     let people = member.guild.memberCount - 4
   
@@ -82,12 +82,12 @@ bot.on("guildMemberAdd", member => {
        .setColor('GREEN')
  .setDescription("Welcome " + member + " to " + member.guild.name + "!\nMember count " + people)
  .setThumbnail(member.user.displayAvatarURL)
- .setFooter(`| Made by Demo | ${member.guild.name}`, member.guild.iconURL)
+ .setFooter(`| Made by Alphi | ${member.guild.name}`, member.guild.iconURL)
 
     wchan.send(embed)
   });
 
-bot.on("guildMemberRemove", member => {
+inv.on("guildMemberRemove", member => {
   let wchan =  member.guild.channels.find("name", "welcome");
     let people = member.guild.memberCount - 4
   
@@ -96,7 +96,7 @@ bot.on("guildMemberRemove", member => {
        .setColor('GREEN')
  .setDescription("Good bye" + member + " you will be missed! We now have \nMember count! `" + people + "`")
  .setThumbnail(member.user.displayAvatarURL)
- .setFooter('| Made By Demo', member.guild.iconURL)
+ .setFooter('| Made By Alphi', member.guild.iconURL)
     wchan.send(embed)
   });
 
