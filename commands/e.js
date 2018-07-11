@@ -9,6 +9,7 @@ exports.run = async (inv, message, args) => {
         data.cmd = cmd;
         data.send = (($) => data.channel.send($));
         const newEmbed = require("./newEmbed")(Discord);
+        console.log(data.cmd) 
         (async () => {
             return (eval(`${data.cmd.join(" ")};`));
         })()
