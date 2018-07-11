@@ -30,7 +30,7 @@ exports.run = (inv, message, args) => {
             if (link) {
                 results.push({ text, link });
             }
-        });
+        }
         if (card) {
             const value = results.slice(0, 3).map(r => `[${r.text}](${r.link})`).join('\n');
             if (value) {
