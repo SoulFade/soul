@@ -1,29 +1,44 @@
 const Discord = require('discord.js');
-const read = require('../storage.json');
 const config = require('../config.json');
 const package2 = require("../package.json");
 const fs = require('fs');
 
 
-exports.run = (bot, message, args) => {
-    if(message.channel.parent.id === '448193459346604042') {
-        if(message.member.roles.has("448199275781029898")) {
+exports.run = (inv, message, args) => {
+    if (command === "mute") {
+        const ms = require("ms");
+        let UserMute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if (!UserMute) return message.channel.send("Please tag user to mute!");
+        if (!message.guild.me.permissions.has("MANAGE_SERVER")) return message.reply("I cant do that")
+        if (UserMute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sorry, you don't have permissions to use this!");
+        if (UserMute.id === message.author.id) return message.channel.send("You cannot mute yourself!");
+        let MutedRol = message.guild.roles.find(`name`, "Muted");
+        if (!MutedRol) {
+            try {
+                MutedRol = await message.guild.createRole({
+                    name: "Muted",
+                    color: "#000000",
+                    permissions: []
+                })
+                message.guild.channels.forEach(async (channel, id) => {
+                    await channel.overwritePermissions(MutedRol, {
+                        SEND_MESSAGES: false,
+                        ADD_REACTIONS: false
+                    });
+                });
+            } catch (e) {
+                console.log(e.stack);
+            }
+        }
+        let MuteTime = args[1]
+        if (!MuteTime) return message.channel.send("For how long do you want to mute?");
+        await (UserMute.addRole(MutedRol.id));
+        message.reply(`<@${UserMute.id}> has been muted for ${ms(ms(MuteTime))}`);
+        setTimeout(function () {
+            UserMute.removeRole(MutedRol.id);
+            message.channel.send(`<@${UserMute.id}> has been unmuted!`);
+        }, ms(MuteTime));
 
-        let member = message.mentions.members.first();      
-        let memaddembed = new Discord.RichEmbed()
-        .setColor(config.embedcolor)
-        .setDescription(member + " is removed from this channel.")
-        .setFooter('Galaxy Designs', message.guild.iconURL)
-        .setTimestamp()
-        message.channel.send(memaddembed);
-        message.channel.overwritePermissions(member, {
-            SEND_MESSAGES: false, VIEW_CHANNEL: false
-        })
-                                    
-        } else {
-            message.channel.send(":x: | You are not allowed to run this command!")
-        }       
-    } else {
-        message.channel.send("Command can only be used in ticket channels.");
+        message.delete();
     }
 }
