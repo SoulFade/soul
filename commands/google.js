@@ -15,7 +15,7 @@ exports.run = (inv, message, args) => {
             lr: 'lang_en',
             hl: 'en'
         };
-        let resp = await got('https://google.com/search?' + stringify(params), { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) Gecko/20100101 Firefox/53.0' } });
+        let resp =  got('https://google.com/search?' + stringify(params), { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) Gecko/20100101 Firefox/53.0' } });
         if (resp.statusCode !== 200) throw 'Google is not responding';
         const $ = cheerio.load(resp.body);
         const results = [];
