@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 const config = require('../config.json')
 
-exports.run = (bot, message, params) => {
+exports.run = (inv, message, params) => {
     function getFormattedTime(date) {
         var seconds = Math.floor(date.getSeconds());
         var minutes = Math.floor(date.getMinutes());
@@ -22,7 +22,7 @@ exports.run = (bot, message, params) => {
     var date = message.guild.createdAt;
 
     var ServerInformation = new discord.RichEmbed()
-        .setAuthor(`Author: Demo#8439`, "https://cdn.discordapp.com/attachments/448175755705450497/448549634386821121/myAvatar_4.png")
+        .setAuthor(`Author: Alphi#9839`, "https://cdn.discordapp.com/attachments/448175755705450497/448549634386821121/myAvatar_4.png")
         .setColor(config.embedcolor)
         .setTimestamp()
         .setDescription(`Server owner: ${message.guild.owner.user}\nServer owner ID: ${message.guild.ownerID}`)
