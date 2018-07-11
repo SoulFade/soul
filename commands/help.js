@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const package = require('../package.json')
 const config = require('../config.json')
 
-exports.run = (bot, message, args) => {
+exports.run = (inv, message, args) => {
     let embed = new Discord.RichEmbed()
             .addField('Vell\'s Commands', 'Help Menu')
             .addField('Prefix', 'My prefix is &')
