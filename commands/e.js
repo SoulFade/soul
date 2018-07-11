@@ -31,4 +31,4 @@ exports.run = async (inv, message, args) => {
             })).catch(console.warn);
         });
 }
-}
+
