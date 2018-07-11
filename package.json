@@ -37,6 +37,7 @@
     "urban": "^0.3.1",
     "cheerio": "^0.22.0",
     "got": "^8.3.2",
+    "figlet": "^1.2.0",
     "querystring": "^0.2.0",
     "ms": "^2.1.1",
     "fs": "0.0.1-security",
