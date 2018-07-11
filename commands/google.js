@@ -47,4 +47,4 @@ exports.run = (inv, message, args) => {
         const finalxd = results.slice(0, 2).map(r => `${r.link}`).join('\n');
          message.channel.send(finalxd);
     }
-}
+
