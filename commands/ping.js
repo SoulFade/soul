@@ -1,7 +1,7 @@
 const {RichEmbed} = require('discord.js');
 const config = require('../config.json');
 
-exports.run = async (client, message, args) => {
+exports.run = async (inv, message, args) => {
     const m = await message.channel.send("Pinging...");
     m.delete();
     const pingEmbed = new RichEmbed()
