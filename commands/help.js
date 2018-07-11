@@ -3,11 +3,28 @@ const package = require('../package.json')
 const config = require('../config.json')
 
 exports.run = (bot, message, args) => {
-    let embed = new Discord.RichEmbed() //info embed on ticket
-        .setTitle("Help Menu")
-        .setColor(config.embedcolor)
-        .setDescription("**__Bot Commands__** | Prefix `" + config.prefix + "`\n\n__**General Commands**__\n\n**serverinfo** Check out some information about us\n**botinfo** View some information about the bot!\n**help** View this menu\n**ping** View Bot Latency\n**new** Order a service/product from me\n**vouch** Give a vouch!\n**suggest** Suggest anything you like\n\n__**Staff Commands**__\n\n**kick** Kicks a member from our discord server\n**ban** Bans a member from our server permenantly\n**prune** Prunes part of the chat\n**add** Adds a member to a ticket\n**revoke** Revokes a member from a ticket\n")
-        .setFooter('Galaxy Designs', bot.user.displayAvatarURL)
-        .setThumbnail(bot.user.displayAvatarURL)
-      message.channel.send(embed)
-}
+    let embed = new Discord.RichEmbed()
+            .addField('Vell\'s Commands', 'Help Menu')
+            .addField('Prefix', 'My prefix is &')
+            .addField('profile', 'Displays your profile')
+            .addField('leaderboard', 'Displays server leaderboard')
+            .addField('google', 'Googles what you ask for.')
+            .addField('dict', 'Defines what you search for.')
+            .addField('status', 'displays the server status for AQ3D game.')
+            .addField('Admin Commands', 'Mute - Ban - Kick - Prune')
+            .addField('Servers', 'Displays amount of servers the bot is in.')
+            .addField('Users', 'Displays amount of users for bot.')
+            .addField("Music", "Usage -> &play 'youtubelink'")
+            .addField("Info", "DMs bot's info (BETA)")
+            .addField("Eval", "Admin-only command")
+            .addField("8ball", "Asks a question to 8ball, usage: &8ball am I cool?")
+            .setColor(`0x550055`)
+            .setThumbnail(message.author.avatarURL)
+            .setFooter("Server: " + `${message.guild.name}`, message.guild.iconURL);
+        await message.author.send({ embed });
+        let cembed = new Discord.RichEmbed()
+            .addField("Please check your DM's 👌", "Help is on its way...")
+            .setColor(`0x550055`)
+            .setFooter("Server: " + `${message.guild.name}`, message.guild.iconURL);
+        await message.channel.send({ embed: cembed });
+  }
