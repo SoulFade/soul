@@ -4,15 +4,15 @@ const package2 = require("../package.json")
 const fs = require('fs');
 
 
-exports.run = (bot, message, args) => {               
-    if(message.channel.parent.id === '448193459346604042') {
-        if(message.member.roles.has("448199275781029898")) {
+exports.run = (inv, message, args) => {               
+    if(message.channel.parent.id === '345') {
+        if(message.member.roles.has("345")) {
 
         let member = message.mentions.members.first();      
         let memaddembed = new Discord.RichEmbed()
         .setColor(0x9167FF)
         .setDescription(member + " has now access to this channel.")
-        .setFooter('Galaxy Designs', bot.user.displayAvatarURL)
+        .setFooter('Vell Pro', inv.user.displayAvatarURL)
         .setTimestamp()
         message.channel.send(memaddembed);
         message.channel.overwritePermissions(member, {
