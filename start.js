@@ -21,7 +21,7 @@ bot.on('ready', () => {
     console.log("")
     console.log("")
     console.log("Core by")
-    figlet('ERAMSORGR', function(err, data) {
+    figlet('Alphi', function(err, data) {
       if (err) {
           console.log('Something went wrong...');
           console.dir(err);
@@ -69,12 +69,6 @@ bot.on("message", message => {
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(bot, message, args);
   } catch (err) {
-    /*let embed2 = new Discord.RichEmbed() //info embed on ticket
-        .setTitle("Error :x:")
-        .setColor("db1212")
-        .setDescription("Amino had an error :sob: \n```fix\n" + err + "```")
-        .setFooter(`Version ` + package.version)
-      message.channel.send(embed2) */
     console.error(err);
   }
 });
@@ -106,4 +100,4 @@ bot.on("guildMemberRemove", member => {
     wchan.send(embed)
   });
 
-  bot.login(config.token); // You can find the bot token at the config.json file.
+  bot.login(config.token); 
