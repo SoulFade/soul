@@ -4,12 +4,12 @@ const Discord = require('discord.js');
 const fs =require("fs");
 const figlet = require('figlet');
 const prefix = config.prefix;
-const bot = new Discord.Client();
+const inv = new Discord.Client();
 
-//Logs of readyness
-bot.on('ready', () => {
-  bot.user.setPresence({game:{name: config.prefix + "help | V." + package.version ,type:1}}).catch(console.error);
-  bot.user.setStatus("online").catch(console.error);
+
+inv.on('ready', () => {
+  inv.user.setPresence({game:{name: `development`}}).catch(console.error);
+  inv.user.setStatus("online").catch(console.error);
 
   figlet('GD', function(err, data) {
     if (err) {
@@ -47,7 +47,7 @@ fs.readdir("./events/", (err, files) => {
     files.forEach(file => {
       let eventFunction = require(`./events/${file}`);
       let eventName = file.split(".")[0];
-      bot.on(eventName, (...args) => eventFunction.run(bot, ...args));
+      inv.on(eventName, (...args) => eventFunction.run(inv, ...args));
     });
   });
 
@@ -58,7 +58,7 @@ bot.on("message", message => {
   const command = args.shift().toLowerCase();
   try {
     if (message.channel.type === "dm") {
-      let embed1 = new Discord.RichEmbed() //info embed on ticket
+      let embed1 = new Discord.RichEmbed()
         .setTitle("Error :x:")
         .setColor("db1212")
         .setDescription("DM Commands are not allowed!")
@@ -67,7 +67,7 @@ bot.on("message", message => {
       return;
   }
     let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(bot, message, args);
+    commandFile.run(inv, message, args);
   } catch (err) {
     console.error(err);
   }
@@ -100,4 +100,4 @@ bot.on("guildMemberRemove", member => {
     wchan.send(embed)
   });
 
-  bot.login(config.token); 
+  inv.login(config.token); 
