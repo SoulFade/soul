@@ -5,7 +5,7 @@ const config = require('../config.json')
 exports.run = (inv, message, args) => {
     let embed = new Discord.RichEmbed()
             .addField('Vell\'s Commands', 'Help Menu')
-            .addField('Prefix', 'My prefix is &')
+            .addField('Prefix', 'My prefix is ?')
             .addField('profile', 'Displays your profile')
             .addField('leaderboard', 'Displays server leaderboard')
             .addField('google', 'Googles what you ask for.')
@@ -19,12 +19,13 @@ exports.run = (inv, message, args) => {
             .addField("Eval", "Admin-only command")
             .addField("8ball", "Asks a question to 8ball, usage: &8ball am I cool?")
             .setColor(`0x550055`)
+            .addField("Features", "More features are being added!!")
             .setThumbnail(message.author.avatarURL)
             .setFooter("Server: " + `${message.guild.name}`, message.guild.iconURL);
-        await message.author.send({ embed });
+               message.author.send({ embed });
         let cembed = new Discord.RichEmbed()
             .addField("Please check your DM's 👌", "Help is on its way...")
             .setColor(`0x550055`)
             .setFooter("Server: " + `${message.guild.name}`, message.guild.iconURL);
-        await message.channel.send({ embed: cembed });
+              message.channel.send({ embed: cembed });
   }
