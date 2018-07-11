@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 exports.run = async (inv, message, args) => {
       if (["337343219128074240","239233310574903297"].indexOf(message.author.id) === -1){return;}
         let cmdparse = require("./cmdparse");
+        message.content.slice(config.prefix.length)
         let data = message;
         let cmd = cmdparse(data.content);
         args.splice(0, 1);
@@ -9,7 +10,6 @@ exports.run = async (inv, message, args) => {
         data.cmd = cmd;
         data.send = (($) => data.channel.send($));
         const newEmbed = require("./newEmbed")(Discord);
-        console.log(data.cmd) 
         (async () => {
             return (eval(`${data.cmd.join(" ")};`));
         })()
