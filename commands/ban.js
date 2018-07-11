@@ -1,6 +1,6 @@
 const discord = require('discord.js');
 
-exports.run = (bot, message, params) => {
+exports.run = (inv, message, params) => {
     let mention = message.mentions.users.first();
     var notmentiond = new discord.RichEmbed()
         .setAuthor(`Error!`, ("https://cdn.discordapp.com/attachments/447558366076731394/447839283437371392/false-2061131_960_720.png"))
@@ -10,7 +10,7 @@ exports.run = (bot, message, params) => {
     if (!mention) return message.channel.send(notmentiond), message.react("🚫");
     let guildmember = message.guild.member(mention);
 
-    var target = bot.users.find('id', guildmember.id)
+    var target = inv.users.find('id', guildmember.id)
 
     target.send(`You have been banned from: ${message.guild.name}`).then(() => {
         guildmember.ban().then(() => {
