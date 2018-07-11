@@ -1,6 +1,6 @@
+const Discord = require("discord.js");
 const config = require("./config.json");
 const package = require("./package.json");
-const Discord = require('discord.js');
 const fs =require("fs");
 const figlet = require('figlet');
 const prefix = config.prefix;
