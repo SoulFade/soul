@@ -5,7 +5,7 @@ const fs =require("fs");
 const figlet = require('figlet');
 const prefix = config.prefix;
 const inv = new Discord.Client();
-
+const talkedRecently = new Set();
 
 inv.on('ready', () => {
   inv.user.setPresence({game:{name: `development`}}).catch(console.error);
@@ -72,6 +72,15 @@ inv.on("message", message => {
     console.error(err);
   }
 });
+  if (talkedRecently.has(message.author.id))
+  return;
+
+// Adds the user to the set so that they can't talk for 2.5 seconds
+talkedRecently.add(message.author.id);
+setTimeout(() => {
+  // Removes the user from the set after 2.5 seconds
+  talkedRecently.delete(message.author.id);
+}, 2500);
 
 inv.on("guildMemberAdd", member => {
     let wchan =  member.guild.channels.find("name", "welcome");
