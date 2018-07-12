@@ -71,8 +71,7 @@ inv.on("message", message => {
   } catch (err) {
     console.error(err);
   }
-});
-  if (talkedRecently.has(message.author.id))
+    if (talkedRecently.has(message.author.id))
   return;
 
 // Adds the user to the set so that they can't talk for 2.5 seconds
@@ -81,6 +80,8 @@ setTimeout(() => {
   // Removes the user from the set after 2.5 seconds
   talkedRecently.delete(message.author.id);
 }, 2500);
+});
+
 
 inv.on("guildMemberAdd", member => {
     let wchan =  member.guild.channels.find("name", "welcome");
