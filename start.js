@@ -34,6 +34,7 @@ inv.on('ready', () => {
               console.dir(err);
               return;
           }
+          //thonk meme
           console.log(data)
         });
       });
