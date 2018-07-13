@@ -104,7 +104,7 @@ inv.on("guildMemberAdd", member => {
     let response =  channel.awaitMessages(mg => {
         return mg.author.id === member.id;
     }, {max: 1})
-    response = response.array()[0];
+    response = response.array[0];
 
     if (response.content.toLowerCase() === "agree"){
         let role = member.guild.roles.find(role => {return role.id==="465951736155340820"});
