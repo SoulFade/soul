@@ -96,7 +96,7 @@ inv.on("guildMemberAdd", member => {
        .setColor('GREEN')
  .setDescription("Welcome " + member + " to " + member.guild.name + "!\nMember count " + people)
  .setThumbnail(member.user.displayAvatarURL)
- .setFooter(`| Made by Alphi | ${member.guild.name}`, member.guild.iconURL)
+ .setFooter(`| Made by Angie | ${member.guild.name}`, member.guild.iconURL)
 
     wchan.send(embed)
  
@@ -127,7 +127,7 @@ inv.on("guildMemberRemove", member => {
        .setColor('GREEN')
  .setDescription("Good bye" + member + " you will be missed! We now have \nMember count! `" + people + "`")
  .setThumbnail(member.user.displayAvatarURL)
- .setFooter('| Made By Alphi', member.guild.iconURL)
+ .setFooter('| Made By Angie', member.guild.iconURL)
     wchan.send(embed)
   });
 
