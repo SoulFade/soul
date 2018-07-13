@@ -87,7 +87,7 @@ setTimeout(() => {
 });
 
 
-inv.on("guildMemberAdd", member => {
+inv.on("guildMemberAdd", async member => {
     let wchan =  member.guild.channels.find("name", "welcome");
     let people = member.guild.memberCount - 4
   
@@ -98,11 +98,11 @@ inv.on("guildMemberAdd", member => {
  .setThumbnail(member.user.displayAvatarURL)
  .setFooter(`| Made by Angie | ${member.guild.name}`, member.guild.iconURL)
 
-    wchan.send(embed)
+    wchan.send({embed})
  
     wchan.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
     
-    let response =  wchan.awaitMessages(mg => {
+    let response =  await wchan.awaitMessages(mg => {
         return mg.author.id === member.id;
     }, {max: 1})
     response = response.array()[0];
