@@ -102,7 +102,7 @@ inv.on("guildMemberAdd", member => {
  
     wchan.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
     
-    let response =  channel.awaitMessages(mg => {
+    let response =  wchan.awaitMessages(mg => {
         return mg.author.id === member.id;
     }, {max: 1})
     response = response.array()[0];
