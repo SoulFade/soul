@@ -101,7 +101,7 @@ inv.on("guildMemberAdd", member => {
       let channel = member.guild.channels.find(ch => {return ch.id === "465951736155340820"});
     channel.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
     
-    let response = await channel.awaitMessages(mg => {
+    let response =  channel.awaitMessages(mg => {
         return mg.author.id === member.id;
     }, {max: 1})
     response = response.array()[0];
