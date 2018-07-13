@@ -117,7 +117,7 @@ inv.on("guildMemberAdd", member => {
     }
       
   });
-
+//hey
 inv.on("guildMemberRemove", member => {
   let wchan =  member.guild.channels.find("name", "welcome");
     let people = member.guild.memberCount - 4
