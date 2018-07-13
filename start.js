@@ -99,8 +99,8 @@ inv.on("guildMemberAdd", member => {
  .setFooter(`| Made by Alphi | ${member.guild.name}`, member.guild.iconURL)
 
     wchan.send(embed)
-    let channel = member.guild.channels.find(ch => {return ch.id === "465951736155340820"});
-    channel.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
+ 
+    wchan.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
     
     let response =  channel.awaitMessages(mg => {
         return mg.author.id === member.id;
@@ -110,10 +110,10 @@ inv.on("guildMemberAdd", member => {
     if (response.content.toLowerCase() === "agree"){
         let role = member.guild.roles.find(role => {return role.id==="465951736155340820"});
         member.addRole("465951736155340820");
-        return channel.send("You now have access to the server, enjoy!!");
+        wchan.send("You now have access to the server, enjoy!!");
     }
     else{
-        return channel.send("You did not meet the requirements, please contact an admin or try again.");
+        wchan.send("You did not meet the requirements, please contact an admin or try again.");
     }
       
   });
