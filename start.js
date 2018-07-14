@@ -107,10 +107,13 @@ inv.on("guildMemberAdd", async member => {
     }, {max: 1})
     response = response.array()[0];
 
-    if (response.content.toLowerCase() === "agree"){
+ if (response.content.toLowerCase() === "agree"){
         let role = member.guild.roles.find(role => {return role.id==="466316850737709057"});
-        member.addRole("466316850737709057");
+        member.addRole(role);
         wchan.send("You now have access to the server, enjoy!!");
+    }
+    else{
+        wchan.send("You did not meet the requirements, please contact an admin or try again.");
     }
     else{
         wchan.send("You did not meet the requirements, please contact an admin or try again.");
