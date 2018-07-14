@@ -7,7 +7,7 @@ exports.run = async (inv, message, args) => {
     const pingEmbed = new RichEmbed()
       .setTitle('Pong!')
       .addField('Bot Latency', `${m.createdTimestamp - message.createdTimestamp} ms`, true)
-      .addField('API Latency', `${Math.round(client.ping)} ms`, true)
+      .addField('API Latency', `${Math.round(inv.ping)} ms`, true)
       .setTimestamp()
       .setColor(config.embedcolor);
    message.channel.send(pingEmbed);
