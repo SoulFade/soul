@@ -11,39 +11,10 @@ inv.on('ready', () => {
   inv.user.setPresence({game:{name: `development`}}).catch(console.error);
   inv.user.setStatus("online").catch(console.error);
 
-  figlet('GD', function(err, data) {
-    if (err) {
-        console.log('Something went wrong...');
-        console.dir(err);
-        return;
-    }
-    console.log(data)
-    console.log("")
-    console.log("")
-    console.log("Core by")
-    figlet('Alphi', function(err, data) {
-      if (err) {
-          console.log('Something went wrong...');
-          console.dir(err);
-          return;
-      }
-      console.log(data)
-        figlet('==========', function(err, data) {
-          if (err) {
-              console.log('Something went wrong...');
-              console.dir(err);
-              return;
-          }
-          //thonk meme
-          console.log(data)
-        });
-      });
-    });
-});
-
+  
 
 //cmd handler
-/*fs.readdir("./events/", (err, files) => {
+fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
       let eventFunction = require(`./events/${file}`);
@@ -51,7 +22,7 @@ inv.on('ready', () => {
       inv.on(eventName, (...args) => eventFunction.run(inv, ...args));
     });
   });
-*/
+
 inv.on("message", message => {
   if (message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
