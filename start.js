@@ -23,15 +23,13 @@ inv.on("message", message => {
   if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const prefixMention = new RegExp(`^<@!?${inv.user.id}> `);
-    const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '?';
+    const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : config.prefix;
   const command = args.shift().toLowerCase();
 
 });
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(inv, message, args);
-  }) catch (err) {
-    console.error(err);
-  }
+  });
     if (talkedRecently.has(message.author.id))
   return;
 // Adds the user to the set so that they can't talk for 2.5 seconds
