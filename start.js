@@ -43,7 +43,7 @@ inv.on('ready', () => {
 
 
 //cmd handler
-fs.readdir("./events/", (err, files) => {
+/*fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
       let eventFunction = require(`./events/${file}`);
@@ -51,7 +51,7 @@ fs.readdir("./events/", (err, files) => {
       inv.on(eventName, (...args) => eventFunction.run(inv, ...args));
     });
   });
-
+*/
 inv.on("message", message => {
   if (message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
