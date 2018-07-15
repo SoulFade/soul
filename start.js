@@ -25,16 +25,7 @@ inv.on("message", message => {
   const prefixMention = new RegExp(`^<@!?${inv.user.id}> `);
     const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '?';
   const command = args.shift().toLowerCase();
-  try {
-    if (message.channel.type === "dm") {
-      let embed1 = new Discord.RichEmbed()
-        .setTitle("Error :x:")
-        .setColor("db1212")
-        .setDescription("DM Commands are not allowed!")
-        .setFooter(`Version ` + package.version)
-      message.channel.send(embed1)
-      return;
-   }
+
 }
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(inv, message, args);
