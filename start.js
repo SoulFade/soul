@@ -29,7 +29,7 @@ inv.on("message", message => {
 });
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(inv, message, args);
-  } catch (err) {
+  }) catch (err) {
     console.error(err);
   }
     if (talkedRecently.has(message.author.id))
