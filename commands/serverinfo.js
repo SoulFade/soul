@@ -22,7 +22,7 @@ exports.run = (inv, message, params) => {
     var date = message.guild.createdAt;
 
     var ServerInformation = new discord.RichEmbed()
-        .setAuthor("Author: Alphi", message.author.avatarURL)
+        .setAuthor("Author: Alphi", message.guild.iconURL)
         .setColor(config.embedcolor)
         .setTimestamp()
         .setThumbnail(message.author.avatarURL)
