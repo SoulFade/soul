@@ -74,7 +74,7 @@ inv.on("message", message => {
   }
 });
 
-inv.on("guildMemberAdd", member => {
+inv.on("guildMemberAdd", async member => {
     let wchan =  member.guild.channels.find("name", "welcome");
     let people = member.guild.memberCount - 4
   
