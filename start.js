@@ -6,13 +6,9 @@ const figlet = require('figlet');
 const prefix = config.prefix;
 const inv = new Discord.Client();
 const talkedRecently = new Set();
-
 inv.on('ready', () => {
   inv.user.setPresence({game:{name: `development`}}).catch(console.error);
   inv.user.setStatus("online").catch(console.error);
-
-  
-
 //cmd handler
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
@@ -22,7 +18,6 @@ fs.readdir("./events/", (err, files) => {
       inv.on(eventName, (...args) => eventFunction.run(inv, ...args));
     });
   });
-
 inv.on("message", message => {
   if (message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
@@ -47,17 +42,13 @@ inv.on("message", message => {
   }
     if (talkedRecently.has(message.author.id))
   return;
-
 // Adds the user to the set so that they can't talk for 2.5 seconds
 talkedRecently.add(message.author.id);
 setTimeout(() => {
   // Removes the user from the set after 2.5 seconds
   talkedRecently.delete(message.author.id);
 }, 2500);
-
 });
-
-
 inv.on("guildMemberAdd", async member => {
     let wchan =  member.guild.channels.find("name", "welcome");
     let people = member.guild.memberCount - 4
@@ -68,11 +59,8 @@ inv.on("guildMemberAdd", async member => {
  .setDescription("Welcome " + member + " to " + member.guild.name + "!\nMember count " + people)
  .setThumbnail(member.user.displayAvatarURL)
  .setFooter(`| Made by Inv Technologies | ${member.guild.name}`, member.guild.iconURL)
-
     wchan.send({embed})
- 
     wchan.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
-    
     let response =  await wchan.awaitMessages(mg => {
         return mg.author.id === member.id;
     }, {max: 1})
@@ -86,20 +74,17 @@ inv.on("guildMemberAdd", async member => {
     else{
         wchan.send("You did not meet the requirements, please contact an admin or try again.");
     }
-      
   });
 //hey
 inv.on("guildMemberRemove", member => {
   let wchan =  member.guild.channels.find("name", "welcome");
-    let people = member.guild.memberCount - 4
-  
+    let people = member.guild.memberCount   
     let embed = new Discord.RichEmbed() //info embed on ticket
        .setTitle("**Member Left**")
        .setColor('GREEN')
- .setDescription("Good bye" + member + " you will be missed! We now have \nMember count! `" + people + "`")
- .setThumbnail(member.user.displayAvatarURL)
- .setFooter('| Made By Inv Technologies', member.guild.iconURL)
-    wchan.send(embed)
+       .setDescription("Good bye" + member + " you will be missed! We now have \nMember count! `" + people + "`")
+       .setThumbnail(member.user.displayAvatarURL)
+        .setFooter('| Made By Inv Technologies', member.guild.iconURL)
+         wchan.send(embed)
   });
-
-  inv.login(process.env.token); 
+inv.login(process.env.token); 
