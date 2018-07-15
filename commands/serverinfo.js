@@ -22,10 +22,10 @@ exports.run = (inv, message, params) => {
     var date = message.guild.createdAt;
 
     var ServerInformation = new discord.RichEmbed()
-        .setAuthor("Author: Alphi", message.guild.iconURL)
+        .setAuthor("Author: Alphi", message.author.avatarURL)
         .setColor(config.embedcolor)
         .setTimestamp()
-        .setThumbnail(message.author.avatarURL)
+        .setThumbnail(message.guild.iconURL)
         .setDescription(`Server owner: ${message.guild.owner.user}\nServer owner ID: ${message.guild.ownerID}`)
         .addField(`Total members:`, message.guild.members.size, true)
         .addField(`Total roles:`, Array.from(numberroles).length, true)
