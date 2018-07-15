@@ -86,5 +86,5 @@ inv.on("guildMemberRemove", member => {
        .setThumbnail(member.user.displayAvatarURL)
         .setFooter('| Made By Inv Technologies', member.guild.iconURL)
          wchan.send(embed)
-  });
+  })
 inv.login(process.env.token); 
