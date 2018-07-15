@@ -34,7 +34,8 @@ inv.on("message", message => {
         .setFooter(`Version ` + package.version)
       message.channel.send(embed1)
       return;
-  }
+   }
+}
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(inv, message, args);
   } catch (err) {
