@@ -16,8 +16,10 @@ fs.readdir("./events/", (err, files) => {
       let eventFunction = require(`./events/${file}`);
       let eventName = file.split(".")[0];
       inv.on(eventName, (...args) => eventFunction.run(inv, ...args));
-    });
+    }
   });
+});
+ 
 inv.on("message", message => {
   if (message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
@@ -26,32 +28,25 @@ inv.on("message", message => {
     const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : config.prefix;
   const command = args.shift().toLowerCase();
 
-});
+
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(inv, message, args);
   });
-    if (talkedRecently.has(message.author.id))
-  return;
-// Adds the user to the set so that they can't talk for 2.5 seconds
-talkedRecently.add(message.author.id);
-setTimeout(() => {
-  // Removes the user from the set after 2.5 seconds
-  talkedRecently.delete(message.author.id);
-}, 2500);
+
 });
 inv.on("guildMemberAdd", async member => {
     let wchan =  member.guild.channels.find("name", "welcome");
-    let people = member.guild.memberCount - 4
+    let people = member.guild.memberCount 
   
     let embed = new Discord.RichEmbed() //info embed on ticket
        .setTitle("**Member Joined**")
        .setColor('GREEN')
- .setDescription("Welcome " + member + " to " + member.guild.name + "!\nMember count " + people)
- .setThumbnail(member.user.displayAvatarURL)
- .setFooter(`| Made by Inv Technologies | ${member.guild.name}`, member.guild.iconURL)
-    wchan.send({embed})
-    wchan.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
-    let response =  await wchan.awaitMessages(mg => {
+       .setDescription("Welcome " + member + " to " + member.guild.name + "!\nMember count " + people)
+       .setThumbnail(member.user.displayAvatarURL)
+       .setFooter(`| Made by Inv Technologies | ${member.guild.name}`, member.guild.iconURL)
+        wchan.send({embed})
+        wchan.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
+        let response =  await wchan.awaitMessages(mg => {
         return mg.author.id === member.id;
     }, {max: 1})
     response = response.array()[0];
