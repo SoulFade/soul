@@ -26,7 +26,7 @@ inv.on("message", message => {
     const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '?';
   const command = args.shift().toLowerCase();
 
-}
+});
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(inv, message, args);
   } catch (err) {
