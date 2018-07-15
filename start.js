@@ -99,7 +99,7 @@ inv.on("guildMemberAdd", async member => {
     }
     else{
         wchan.send("You did not meet the requirements, please contact an admin or try again.");
-    })
+    }
   });
 
 inv.on("guildMemberRemove", member => {
