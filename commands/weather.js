@@ -28,7 +28,8 @@ const weather = require("weather-js")
            .addField("Humidity", ` ${current.humidity}%`, true)
            .addField("Day", `${current.day}`, true)
            .addField("Date", `${current.date}`, true)
-           
+           .setFooter("Requested by: " + message.author.username)
+           .setTimestamp()
            //Display when it's called
            message.channel.sendEmbed(embed)
 
