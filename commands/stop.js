@@ -18,7 +18,7 @@ if (!servers[message.guild.id].playing) {
 						return;
 			    }
 		    } else {
-   			   message.reply('You're not in a voice channel :x: !');
+   			   message.reply('You\'re not in a voice channel :x: !');
 			    return;
     			}
 		  }
