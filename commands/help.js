@@ -19,6 +19,8 @@ exports.run = (inv, message, args) => {
             .addField("Fun", "?bann, sends a fake message of tagged user being banned")
             .addField("8ball", "Asks a question to 8ball, usage: ?8ball am I cool?")
             .setColor(`0x550055`)
+            .addField("Kiss", "Sends an image, a text message and a DM to the mentioned user!")
+            .addField("Hug", "Sends an image, a text message and a DM to the mentioned user!")
             .addField("Features", "More features are being added!!")
             .setThumbnail(message.author.avatarURL)
             .setFooter("Server: " + `${message.guild.name}`, message.guild.iconURL);
