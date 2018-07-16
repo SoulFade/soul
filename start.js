@@ -112,7 +112,7 @@ inv.on("guildMemberRemove", member => {
  .setDescription("Good bye" + member + " you will be missed! We now have \nMember count! `" + people + "`")
  .setThumbnail(member.user.displayAvatarURL)
  .setFooter('| Made By Inv Technologies', member.guild.iconURL)
-    wchan.send(embed)
+    wchan.send({embed})
   });
 
   inv.login(process.env.token);
