@@ -103,16 +103,16 @@ inv.on("guildMemberAdd", async member => {
   });
 
 inv.on("guildMemberRemove", member => {
-  let wchan =  member.guild.channels.find("name", "welcome");
+    let wchan =  member.guild.channels.find("name", "welcome");
     let people = member.guild.memberCount - 4
   
-    let embed = new Discord.RichEmbed() //info embed on ticket
-       .setTitle("**Member Left**")
-       .setColor('GREEN')
- .setDescription("Good bye" + member + " you will be missed! We now have \nMember count! `" + people + "`")
- .setThumbnail(member.user.displayAvatarURL)
- .setFooter('| Made By Inv Technologies', member.guild.iconURL)
-    wchan.send({embed})
+    let embed = new Discord.RichEmbed()
+    .setTitle("**Member Left**")
+    .setColor('GREEN')
+    .setDescription("Good bye" + member + " you will be missed! We now have \nMember count! `" + people + "`")
+    .setThumbnail(member.user.avatarURL)
+    .setFooter('| Made By Inv Technologies', member.guild.iconURL)
+    wchan.send(embed)
   });
 
   inv.login(process.env.token);
