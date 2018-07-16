@@ -8,5 +8,6 @@ exports.run = (inv, message, args) => {
     .setTimestamp()
     .setImage("http://www.mobiletoones.com/downloads/wallpapers/love_wallpapers/preview/25/64432-kiss.jpg")
     message.channel.send(`${mention}` +  "**, you have been kissed by: ** " + message.author.username + " :heart:" );
+    message.channel.send(kiss);
     mention.send("**You have been kissed by: **" + message.author.username + " in: " + message.guild.name);
 }
