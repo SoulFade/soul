@@ -82,7 +82,7 @@ inv.on("guildMemberAdd", async member => {
        .setTitle("**Member Joined**")
        .setColor('GREEN')
  .setDescription("Welcome " + member + " to " + member.guild.name + "!\nMember count " + people)
- .setThumbnail(member.user.displayAvatarURL)
+ .setThumbnail(member.user.avatarURL)
  .setFooter(`| Made by Inv Technologies | ${member.guild.name}`, member.guild.iconURL)
 
     wchan.send(embed)
