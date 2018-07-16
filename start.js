@@ -76,16 +76,6 @@ inv.on("message", message => {
 
 inv.on("guildMemberAdd", async member => {
     let wchan =  member.guild.channels.find("name", "welcome");
-    let people = member.guild.memberCount - 4
-  
-    let embed = new Discord.RichEmbed() //info embed on ticket
-       .setTitle("**Member Joined**")
-       .setColor('GREEN')
- .setDescription("Welcome " + member + " to " + member.guild.name + "!\nMember count " + people)
- .setThumbnail(member.user.avatarURL)
- .setFooter(`| Made by Inv Technologies | ${member.guild.name}`, member.guild.iconURL)
-
-    wchan.send(embed)
    wchan.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
         let response =  await wchan.awaitMessages(mg => {
         return mg.author.id === member.id;
@@ -100,19 +90,6 @@ inv.on("guildMemberAdd", async member => {
     else{
         wchan.send("You did not meet the requirements, please contact an admin or try again.");
     }
-  });
-
-inv.on("guildMemberRemove", member => {
-    let wchan =  member.guild.channels.find("name", "welcome");
-    let people = member.guild.memberCount - 4
-  
-    let embed = new Discord.RichEmbed()
-    .setTitle("**Member Left**")
-    .setColor('GREEN')
-    .setDescription("Good bye" + member + " you will be missed! We now have \nMember count! `" + people + "`")
-    .setThumbnail(member.user.avatarURL)
-    .setFooter('| Made By Inv Technologies', member.guild.iconURL)
-    wchan.send(embed)
   });
 
   inv.login(process.env.token);
