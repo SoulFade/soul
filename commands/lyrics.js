@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const package = require("../package.json");
 const config = require("../config.json")
-
+var songs =[];
 exports.run = (inv, message, args) => {
     if(message.content.indexOf('?lyrics') != -1 && message.content != "?lyrics"){
 
