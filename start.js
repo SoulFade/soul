@@ -47,7 +47,7 @@ fs.readdir("./events/", (err, files) => {
     files.forEach(file => {
       let eventFunction = require(`./events/${file}`);
       let eventName = file.split(".")[0];
-      bot.on(eventName, (...args) => eventFunction.run(bot, ...args));
+      inv.on(eventName, (...args) => eventFunction.run(inv, ...args));
     });
   });
 
@@ -74,22 +74,6 @@ inv.on("message", message => {
   }
 });
 
-inv.on("guildMemberAdd", async member => {
-    let wchan =  member.guild.channels.find("name", "welcome");
-   wchan.send(`Welcome to Army of Morons ${member.toString()}! <:hype:468081845787951106> please take some time to read our <#465951736155340820> channel <:sippy:468081819980660766> and when you're done type 'agree' to unlock the rest of the server!  `);
-        let response =  await wchan.awaitMessages(mg => {
-        return mg.author.id === member.id;
-    }, {max: 1})
-    response = response.array()[0];
 
- if (response.content.toLowerCase() === "agree"){
-        let role = member.guild.roles.find(role => {return role.id==="466316850737709057"});
-        member.addRole(role);
-        wchan.send("You now have access to the server, enjoy!!");
-    }
-    else{
-        wchan.send("You did not meet the requirements, please contact an admin or try again.");
-    }
-  });
 
   inv.login(process.env.token);
