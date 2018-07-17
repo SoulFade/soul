@@ -76,7 +76,7 @@ inv.on("message", message => {
 
 inv.on("guildMemberAdd", async member => {
     let wchan =  member.guild.channels.find("name", "welcome");
-   wchan.send(`Hi ${member.toString()}! Please respond with 'agree' to access the server.`);
+   wchan.send(`Welcome to Army of Morons ${member.toString()}! :hype: please take some time to read our <#465951736155340820> channel :sippy: and when you're done type 'agree' to unlock the rest of the server!  `);
         let response =  await wchan.awaitMessages(mg => {
         return mg.author.id === member.id;
     }, {max: 1})
