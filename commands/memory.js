@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 
-exports.run(inv, message, args) => {
+exports.run = (inv, message, args) => {
     let memory =  (process.memoryUsage().heapUsed/1024/1024).toFixed(2) + " MB "
     const mem = new Discord.RichEmbed()
     .setAuthor("Vell's Memory Usage", inv.user.avatarURL)
