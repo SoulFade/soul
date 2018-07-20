@@ -1,6 +1,8 @@
 const discord = require('discord.js');
 
 exports.run = (inv, message, params) => {
+    if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sorry, you don't have permissions to use this!");
+
     let mention = message.mentions.users.first();
     var notmentiond = new discord.RichEmbed()
         .setAuthor(`Error!`, ("https://cdn.discordapp.com/attachments/447558366076731394/447839283437371392/false-2061131_960_720.png"))
