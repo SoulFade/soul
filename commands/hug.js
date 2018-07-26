@@ -7,7 +7,13 @@ exports.run = (inv, message, args) => {
 'https://media.giphy.com/media/CZpro4AZHs436/giphy2.gif',
 'https://media.giphy.com/media/CZpro4AZHs436/giphy3.gif',
 ]
-   message.channel.send(`${message.author} gave ${member} a hug :heart:!`, {
-    file: rando_imgs[Math.floor(Math.random() * rando_imgs.length)]
-  });
+ const mention = message.mentions.members.first();
+ const hug = new Discord.RichEmbed()
+ .setTimestamp()
+ .setColor("#ff0000")
+ .setImage(rando_imgs[Math.floor(Math.random() * rando_imgs.length)])
+ .setFooter("Sent by: " + message.author.username)
+ message.channel.send(mention + " you have been hugged by: " + message.author.username + " :heart:")
+ mention.send("You were hugged by: " + message.author.username + " in " + `${message.guild.name}`)
+
 }
