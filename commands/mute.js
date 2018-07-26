@@ -15,13 +15,13 @@ exports.run = (inv, async message, args) => {
         let MutedRol = message.guild.roles.find(`name`, "Muted");
         if (!MutedRol) {
             try {
-                MutedRol = await message.guild.createRole({
+                MutedRol =  message.guild.createRole({
                     name: "Muted",
                     color: "#000000",
                     permissions: []
                 })
                 message.guild.channels.forEach(async (channel, id) => {
-                    await channel.overwritePermissions(MutedRol, {
+                     channel.overwritePermissions(MutedRol, {
                         SEND_MESSAGES: false,
                         ADD_REACTIONS: false
                     });
