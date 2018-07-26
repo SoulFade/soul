@@ -37,7 +37,7 @@ exports.run = (inv, message, args) => {
         setTimeout(function () {
             UserMute.removeRole(MutedRol.id);
             message.channel.send(`<@${UserMute.id}> has been unmuted!`);
-        }, ms(MuteTime));
+        }, ms(MuteTime)); //test
 
         message.delete();
     }
