@@ -11,7 +11,7 @@ exports.run = (inv, message, args) => {
         if (!tokick) return message.channel.send("Kick Who?")
         if (tokick.id === "291221132256870400")
             return message.channel.send("No")
-        if (tokick.kickable)
+        if (!tokick.kickable)
             return message.channel.send("I cannot kick this user!");
         let reason = args.slice(1).join(' ');
         if (!reason) {
