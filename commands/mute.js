@@ -8,7 +8,7 @@ exports.run = (inv, message, args) => {
         const ms = require("ms");
         let UserMute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if (!UserMute) return message.channel.send("Please tag user to mute!");
-        if (!message.guild.me.permissions.has("MANAGE_SERVER")) return message.reply("I cant do that")
+        if (!message.guild.me.permissions.has("MANAGE_GUILD")) return message.reply("I cant do that")
         if (UserMute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sorry, you don't have permissions to use this!");
         if (UserMute.id === message.author.id) return message.channel.send("You cannot mute yourself!");
         let MutedRol = message.guild.roles.find(`name`, "Muted");
