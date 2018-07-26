@@ -1,6 +1,6 @@
 const discord = require('discord.js');
 
-exports.run = (inv, message, params) => {
+exports.run = (inv, message, args) => {
 message.delete()
 
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You don't have permissions to do that!");
