@@ -5,7 +5,6 @@ const fs = require('fs');
 
 
 exports.run = (inv, message, args) => {
-  if (command === "kick") {
         if (!message.member.hasPermission("KICK_MEMBERS"))
             return message.channel.send("Sorry, you don't have permissions to use this!");
         let tokick = message.mentions.members.first();
@@ -20,9 +19,8 @@ exports.run = (inv, message, args) => {
         } else {
             reason = `${reason}`
         }
-        await tokick.kick(reason)
+         tokick.kick(reason)
             .catch(error => message.reply(`Sorry, I couldn't kick because of : ${error}`));
         message.channel.send(`${tokick} has been **kicked** from the server for: ${reason}`)
         message.delete();
-    }
  }
