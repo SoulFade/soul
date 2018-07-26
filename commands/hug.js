@@ -14,6 +14,7 @@ exports.run = (inv, message, args) => {
  .setImage(rando_imgs[Math.floor(Math.random() * rando_imgs.length)])
  .setFooter("Sent by: " + message.author.username)
  message.channel.send(mention + " you have been hugged by: " + message.author.username + " :heart:")
+ message.channel.send(hug)
  mention.send("You were hugged by: " + message.author.username + " in " + `${message.guild.name}`)
 
 }
