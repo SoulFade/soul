@@ -1,4 +1,5 @@
 exports.run = async (inv, message) => {
+  if(message.author.id !=="337343219128074240") return message.reply("Only owner can use this command | :x:")
   message.channel.send("Are you sure you want to reboot?\n\nReply with `cancel` to abort the reboot. The reboot will self-abort in 30 seconds.");
 
   const validAnswers = ["yes", "y", "no", "n", "cancel"];
