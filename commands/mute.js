@@ -31,7 +31,7 @@ exports.run = (inv, message, args) => {
         }
         let MuteTime = args[1]
         if (!MuteTime) return message.channel.send("For how long do you want to mute?");
-        await (UserMute.addRole(MutedRol.id));
+         (UserMute.addRole(MutedRol.id));
         message.reply(`<@${UserMute.id}> has been muted for ${ms(ms(MuteTime))}`);
         setTimeout(function () {
             UserMute.removeRole(MutedRol.id);
