@@ -18,6 +18,7 @@ exports.run = (inv, message, args) => {
    const channel = new Discord.RichEmbed()
    .setTitle("Help is on its way! :ok_hand:", inv.user.avatarURL)
    .setTimestamp()
+   .setColor(`0x005500`
    .setFooter("Requested by: " + message.author.username)
    message.channel.send(channel);
    }
