@@ -5,7 +5,9 @@ const fs =require("fs");
 const figlet = require('figlet');
 const prefix = config.prefix;
 const inv = new Discord.Client();
-
+inv.commands = new Discord.Collection();
+inv.aliases = new Discord.Collection();
+inv.playlists = new Discord.Collection();
 //Logs of readyness
 inv.on('ready', () => {
   inv.user.setPresence({game:{name: config.prefix + "help | V." + package.version ,type:1}}).catch(console.error);
