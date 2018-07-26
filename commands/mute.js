@@ -4,7 +4,7 @@ const package2 = require("../package.json");
 const fs = require('fs');
 
 
-exports.run = (inv, async message, args) => {
+exports.run = (inv, message, args) => {
     if (command === "mute") {
         const ms = require("ms");
         let UserMute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
