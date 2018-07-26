@@ -13,4 +13,4 @@ exports.help = {
   name: "stats",
   description: "Displays statistical data in regards to the bot.",
   usage: "stats"
-};
+}; //test
