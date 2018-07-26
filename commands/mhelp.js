@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-exports.run(inv, message, args) => {
+exports.run = (inv, message, args) => {
    const music = new Discord.RichEmbed()
    .setAuthor("Developer: Alphi", message.author.avatarURL)
    .setTimestamp()
