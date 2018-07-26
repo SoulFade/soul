@@ -5,7 +5,6 @@ const fs = require('fs');
 
 
 exports.run = (inv, message, args) => {
-    if (command === "mute") {
         const ms = require("ms");
         let UserMute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if (!UserMute) return message.channel.send("Please tag user to mute!");
@@ -41,4 +40,4 @@ exports.run = (inv, message, args) => {
 
         message.delete();
     }
-}
+
