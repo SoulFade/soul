@@ -1,25 +1,22 @@
-const Discord = require('discord.js');
-const package = require('../package.json')
-const config = require('../config.json')
+exports.run = (inv, message) => {
+  const voiceChannel = message.member.voiceChannel ? message.member.voiceChannel : (message.guild.voiceConnection ? message.guild.voiceConnection.channel : null);
+  if (!voiceChannel || (!message.member.voiceChannel && message.author.permLevel < 2)) {
+    return message.reply("Please join a voice channel first!");
+  }
 
-exports.run = (inv, message, args) => {
-if (!servers[message.guild.id].playing) {
-			message.reply(":x: | Nothing Playing!")
-		}
-		    if (message.member.voiceChannel) {
-			    if (message.member.voiceChannelID !== message.guild.me.voiceChannelID) {
-				    message.reply("Please join voice channel with me!")
-				    return;
-			    } else { 
-					console.log("queue over");
-						servers[message.guild.id].playing = false;
-				    	servers[message.guild.id].queue = []
-						message.member.voiceChannel.leave();
-						return;
-			    }
-		    } else {
-   			   message.reply('You\'re not in a voice channel :x: !');
-			    return;
-    			}
-		  }
-    }
+  if(inv.playlists.has(message.guild.id)) {
+    const queue = inv.playlists.get(message.guild.id);
+    queue.queue = [];
+    queue.dispatcher.end();
+  }
+};
+
+exports.conf = {
+  aliases: [],
+  permLevel: 0
+};
+
+exports.help = {
+  name: "stop",
+  description: "Ends the current playlist.",
+  usage: "Stop"
