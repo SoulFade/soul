@@ -37,6 +37,7 @@
     "urban": "^0.3.1",
     "cheerio": "^0.22.0",
     "got": "^8.3.2",
+    "google-translate-api": "^2.3.0",
     "figlet": "^1.2.0",
     "querystring": "^0.2.0",
     "weather-js": "^2.0.0",
