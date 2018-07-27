@@ -1,4 +1,4 @@
-const Discord = requre("discord.js")
+const Discord = require("discord.js");
 
 exports.run = (inv, message, args) => {
         
