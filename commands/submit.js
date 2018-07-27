@@ -1,4 +1,4 @@
-const discord = requre("discord.js")
+const Discord = requre("discord.js")
 
 exports.run = (inv, message, args) => {
         
@@ -10,8 +10,13 @@ exports.run = (inv, message, args) => {
         if (!msg) return message.reply("Please tell us for what are you applying!");
 
         chan.send(`${message.author} Application Enqueued. Please Wait.`);
+        
+        let emb = new Discord.RichEmbed()
+        .setColor("#00ff00")
+        .setDescription(msg)
+        .setFooter("Sent by " + message.author.tag)
 
-        chan2.send(msg);
+        chan2.send(emb);
     }
 
  
