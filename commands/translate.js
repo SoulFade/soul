@@ -1,42 +1,45 @@
-const botSend = require("../core/send");
-const translate = require("../core/translate");
+const Discord = require('discord.js');
+const prefix = ("?");
+const translate = require('google-translate-api');
+const Langs = ['afrikaans','albanian','amharic','arabic','armenian','azerbaijani','bangla','basque','belarusian','bengali','bosnian','bulgarian','burmese','catalan','cebuano','chichewa','chinese simplified','chinese traditional','corsican','croatian','czech','danish','dutch','english','esperanto','estonian','filipino','finnish','french','frisian','galician','georgian','german','greek','gujarati','haitian creole','hausa','hawaiian','hebrew','hindi','hmong','hungarian','icelandic','igbo','indonesian','irish','italian','japanese','javanese','kannada','kazakh','khmer','korean','kurdish (kurmanji)','kyrgyz','lao','latin','latvian','lithuanian','luxembourgish','macedonian','malagasy','malay','malayalam','maltese','maori','marathi','mongolian','myanmar (burmese)','nepali','norwegian','nyanja','pashto','persian','polish','portugese','punjabi','romanian','russian','samoan','scottish gaelic','serbian','sesotho','shona','sindhi','sinhala','slovak','slovenian','somali','spanish','sundanese','swahili','swedish','tajik','tamil','telugu','thai','turkish','ukrainian','urdu','uzbek','vietnamese','welsh','xhosa','yiddish','yoruba','zulu'];
 
-// -----------------------------
-// translate string to language
-// -----------------------------
+module.exports.run = async (inv, message, args) => {
+  
+  if (args[0] === undefined) {
+      
+const embed = new Discord.RichEmbed()
+    .setColor("00ff00")
+    .setTitle("Please choose a language to translate to:")
+    .setDescription('`afrikaans`, `albanian`, `amharic`, `arabic`, `armenian`, `azerbaijani`, `bangla`, `basque`, `belarusian`, `bengali`, `bosnian`, `bulgarian`, `burmese`, `catalan`, `cebuano`, `chichewa`, `chinese simplified`, `chinese traditional`, `corsican`, `croatian`, `czech`, `danish`, `dutch`, `english`, `esperanto`, `estonian`, `filipino`, `finnish`, `french`, `frisian`, `galician`, `georgian`, `german`, `greek`, `gujarati`, `haitian creole`, `hausa`, `hawaiian`, `hebrew`, `hindi`, `hmong`, `hungarian`, `icelandic`, `igbo`, `indonesian`, `irish`, `italian`, `japanese`, `javanese`, `kannada`, `kazakh`, `khmer`, `korean`, `kurdish (kurmanji)`, `kyrgyz`, `lao`, `latin`, `latvian`, `lithuanian`, `luxembourgish`, `macedonian`, `malagasy`, `malay`, `malayalam`, `maltese`, `maori`, `marathi`, `mongolian`, `myanmar (burmese)`, `nepali`, `norwegian`, `nyanja`, `pashto`, `persian`, `polish`, `portugese`, `punjabi`, `romanian`, `russian`, `samoan`, `scottish gaelic`, `serbian`, `sesotho`, `shona`, `sindhi`, `sinhala`, `slovak`, `slovenian`, `somali`, `spanish`, `sundanese`, `swahili`, `swedish`, `tajik`, `tamil`, `telugu`, `thai`, `turkish`, `ukrainian`, `urdu`, `uzbek`, `vietnamese`, `welsh`, `xhosa`, `yiddish`, `yoruba`, `zulu`');
 
-module.exports = function(data)
-{
-   //
-   // Send error for empty content
-   //
+    return message.channel.send(embed);
 
-   if (!data.cmd.content)
-   {
-      data.color = "error";
-      data.text =
-         ":warning:  Missing content for translation.\n ```md\n" +
-         "# Valid examples\n" +
-         data.config.translateCmd + " this to french: Hello world\n" +
-         data.config.translateCmd + " this to en from de: Wie geht's?\n" +
-         data.config.translateCmd + " this to hebrew, arabic: I love you\n\n" +
-         "# More help with this command\n> " +
-         data.config.translateCmd + " help custom" +
-         "```";
+  } else {
 
-      return botSend(data);
-   }
+    if (args[1] === undefined) {
 
-   //
-   // Start translation
-   //
+      return message.channel.send('I cannot translate nothing!');
 
-   data.translate = {
-      original: data.cmd.content,
-      to: data.cmd.to,
-      from: data.cmd.from,
-      multi: true
-   };
+    } else {
+        let transArg = args[0].toLowerCase();
+    
+      args = args.join(' ').slice(prefix.length);
+      let translation;
 
-   translate(data);
-};
+      if (!Langs.includes(transArg)) return message.channel.send(`Invalid language ${message.author}! (maybe check for typos?)\nYou can see all languages with \`${prefix}translators language\`.`);
+      args = args.slice(transArg.length);
+
+      translate(args, {to: transArg}).then(res => {
+
+        const embed = new Discord.RichEmbed()
+        .setDescription(res.text)
+        .setColor("00ff00");
+        return message.channel.send(embed);
+
+      });
+
+    }
+
+  }
+  
+}
