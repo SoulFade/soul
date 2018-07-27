@@ -1,7 +1,9 @@
 const config = require("./config.json");
 const package = require("./package.json");
 const Discord = require('discord.js');
-const fs =require("fs");
+const sql = require("sqlite");
+sql.open("./score.sqlite");
+const fs = require("fs");
 const figlet = require('figlet');
 const prefix = config.prefix;
 const inv = new Discord.Client();
