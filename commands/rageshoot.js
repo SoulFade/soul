@@ -1,3 +1,4 @@
 exports.run = (inv, message, args) => {
-   message.channel.send("<a:peepoRageShoot:394097357521682452>");
+   message.react(":white_check_mark: ")
+   message.channel.send("<a:rage:473165545429270529>");
 }
