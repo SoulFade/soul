@@ -3,7 +3,7 @@ const config = require ('../config.json')
 const fs = require('fs')
 
 exports.run = (inv, message, args) => {
-
+        message.react("✅")
         const urban = require("urban");
         if (args.length < 1) return message.reply("Please enter something!");
         let forsrh = args.join(" ");
