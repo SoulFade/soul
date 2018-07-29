@@ -406,7 +406,7 @@ inv.on("message", function(message){
 		if (anyoneStart || anyoneStop || privileged) {
 			if (!trivia && !paused && message.content === "?start"){ // starts the trivia
 				triviaChannel = message.channel;
-				?inv.deleteMessage(message);
+				inv.deleteMessage(message);
 				startTrivia(message);
 			} else if (!trivia && !paused && message.content.split(" ")[0] === "?list"){ // changes trivia list
 				inv.deleteMessage(message);
