@@ -115,7 +115,7 @@ function endTrivia(message, finished) {
 	for (var i = 0; i < players.length; i++) {
 		fs.appendFileSync(outputFilename, "\n<tr><td>" + getOrdinal(i + 1) + "</td><td>" + names[i] + "</td><td>&lt;@" + players[i] + "&gt;</td><td>" + scores[i] + "</td><td>" + streaks[i] + "</td><td>" + (bestTimes[i] / 1000).toFixed(3) + "</td><td>" + ((avgTimes[i]) / 1000).toFixed(3) + "</td></tr>");
 	}
-	fs.appendFileSync(outputFilename, "\n</table>\n<p>Vell Bot created by " <a href="https://discordapp.com">Alphi#9839</a></p>\n</body>\n</html>");
+	fs.appendFileSync(outputFilename, "\n</table>\n<p>Vell Bot created by <a href=\"https://discordapp.com\">Alphi#9839</a></p>\n</body>\n</html>");
 }
 
 function randomizeQuestions() {
@@ -311,7 +311,7 @@ function reconnect() {
 		for (var i = 0; i < players.length; i++) {
 			fs.appendFileSync(outputFilename, "\n<tr><td>" + getOrdinal(i + 1) + "</td><td>" + names[i] + "</td><td>&lt;@" + players[i] + "&gt;</td><td>" + scores[i] + "</td><td>" + streaks[i] + "</td><td>" + (bestTimes[i] / 1000).toFixed(3) + "</td><td>" + ((times[i] / scores[i]) / 1000).toFixed(3) + "</td></tr>");
 		}
-		fs.appendFileSync(outputFilename, "\n</table>\n<p>Vell Bot created by" <a href="https://discordapp.com">Alphi#9839</a></p>\n<h2>Error info:</h2><ul>");
+		fs.appendFileSync(outputFilename, "\n</table>\n<p>Vell Bot created by <a href=\"https://discordapp.com\">Alphi#9839</a></p>\n<h2>Error info:</h2><ul>");
 		fs.appendFileSync(outputFilename, "\n<li>var questionNum = " + questionNum + ";</li>");
 		fs.appendFileSync(outputFilename, "\n<li>var maxQuestionNum = " + maxQuestionNum + ";</li>");
 		fs.appendFileSync(outputFilename, "\n<li>var lastRoundWinner = \"" + lastRoundWinner + "\";</li>");
@@ -643,7 +643,7 @@ function exitHandler() {
 			for (var i = 0; i < players.length; i++) {
 				fs.appendFileSync(outputFilename, "\n<tr><td>" + getOrdinal(i + 1) + "</td><td>" + names[i] + "</td><td>&lt;@" + players[i] + "&gt;</td><td>" + scores[i] + "</td><td>" + streaks[i] + "</td><td>" + (bestTimes[i] / 1000).toFixed(3) + "</td><td>" + ((times[i] / scores[i]) / 1000).toFixed(3) + "</td></tr>");
 			}
-			fs.appendFileSync(outputFilename, "\n</table>\n<p>Vell Bot created by" <a href="https://discordapp.com">Alphi#9839</a></p>\n<h2>Error info:</h2><ul>");
+			fs.appendFileSync(outputFilename, "\n</table>\n<p>Vell Bot created by  <a href=\"https://discordapp.com\">Alphi#9839</a></p>\n<h2>Error info:</h2><ul>");
 			fs.appendFileSync(outputFilename, "\n<li>var questionNum = " + questionNum + ";</li>");
 			fs.appendFileSync(outputFilename, "\n<li>var maxQuestionNum = " + maxQuestionNum + ";</li>");
 			fs.appendFileSync(outputFilename, "\n<li>var lastRoundWinner = \"" + lastRoundWinner + "\";</li>");
