@@ -3,6 +3,7 @@ const package = require("../package.json");
 const config = require("../config.json")
 
 exports.run = (inv, message, args) => {
+   message.react("✅")
    if(!args[1]) return message.reply("Plesae enter a full question with 2 or more words!");
     let replies = ["Yes", "No", "I don't know", "Ask again later!", "NO U", "I am not sure!", "Pls No", "You tell me", "Without a doubt", "Cannot predict now", "Without a doubt", ];
 
