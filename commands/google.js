@@ -6,7 +6,7 @@ const package2 = require("../package.json")
 
 exports.run = async (inv, msg, args) => {
     if(args.length < 1) msg.channel.send('I need to know what to search...');
-
+    //msg.react(inv.emojis.get("473173054252384258"))
     await msg.channel.send('<a:loading:465944291634839554> Googling....').then(msg => {msg.delete(1000)});
 
     const params = {
@@ -58,5 +58,5 @@ exports.run = async (inv, msg, args) => {
     const resultxD = results.slice(0, 1).map(r => `${r.link}`).join('\n');
 
     await msg.channel.send(resultxD);
-    msg.react(inv.emojis.get("473173054252384258"))
+    
 };
