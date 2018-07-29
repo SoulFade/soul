@@ -1,6 +1,7 @@
 const discord = require('discord.js');
 
 exports.run = (inv, message, params) => {
+    message.react("✅")
     if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sorry, you don't have permissions to use this!");
 
     let mention = message.mentions.users.first();
