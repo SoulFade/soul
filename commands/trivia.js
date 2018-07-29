@@ -636,7 +636,7 @@ console.log("The trivia bot has been started.");
 process.stdin.resume();
 
 function exitHandler() {
-	inv.sendMessage(triviaChannel, "Attention, " + message.author.username " the trivia bot has been terminated.", {tts: true}, function(error, message){
+	inv.sendMessage(triviaChannel, "Attention, " + message.author.username + " the trivia bot has been terminated.", {tts: true}, function(error, message){
 		if (trivia) {
 			var outputFilename = "results" + Date.now() + ".html";
 			fs.writeFileSync(outputFilename, "<html><head><title>Vell Bot Trivia Leaderboard</title></head>\n<body>\n<h1>Winners of round</h1>\n<p style=\"color: red\">(aborted at " + (new Date()).toUTCString() + ")</p>\n<table border=\"1\">\n<tr><th>Rank</th><th>Name</th><th>User ID</th><th>Score</th><th>Best Streak</th><th>Best Time</th><th>Avg. Time</th></tr>");
