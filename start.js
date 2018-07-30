@@ -110,6 +110,16 @@ inv.on("message", message => {
       message.reply(`You currently have ${row.points} points, good going!`);
     });
   }
+ const responseObject = {
+  "ayy": "Ayy, lmao!",
+  "wat": "Say what?",
+  "lol": "lol indeed",
+  "odii": "is nub"
+};
+  if(responseObject[message.content]) {
+    message.channel.send(responseObject[message.content]);
+  } 
+ 
 });
 
 
