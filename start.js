@@ -61,7 +61,7 @@ fs.readdir("./events/", (err, files) => {
     });
   });
 
-inv.on("message", message => {
+inv.on("message", (message) => {
   if (message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -76,6 +76,13 @@ inv.on("message", message => {
       message.channel.send(embed1)
       return;
   }
+    
+const responseObject = {
+  "ayy": "Ayy, lmao!",
+  "wat": "Say what?",
+  "lol": "lol indeed",
+  "odii": "is nub"
+};
     let commandFile = require(`./commands/${command}.js`);
     commandFile.run(inv, message, args);
   } catch (err) {
