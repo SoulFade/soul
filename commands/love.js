@@ -5,6 +5,12 @@ const mentions = message.mentions.users;
 let special = false;
 special_users.forEach((id) => mentions.has(id), special = true);
 const percent = special ? 100 : Math.floor(Math.random()*100);
-if (mentions.size === 2) message.channel.send(`${mentions.array()[0].username} and ${mentions.array()[1].username} have a ${percent}% love connection.`);
-else message.channel.send(`Please mention (2) people.`);
+if (mentions.size === 2) {
+  const love = new Discord.RichEmbed()
+  .setTimestamp()
+  .setColor(`#ff0000`)
+  .addField(`${mentions.array()[0].username} and $mentions.array()[1].username have a: `, `${percent}% love connection.`); 
+  message.channel.send(love);
+}
+  else message.channel.send(`Please mention (2) people.`);
 }
