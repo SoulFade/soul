@@ -1,3 +1,3 @@
 const Discord = require('discord.js');
 const Manager = new Discord.ShardingManager('./start.js');
-Manager.spawn(10);
+Manager.spawn(3500);
