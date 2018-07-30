@@ -10,7 +10,7 @@ if (mentions.size === 2) {
   const love = new Discord.RichEmbed()
   .setTimestamp()
   .setColor(`#ff0000`)
-  .addField(`${mentions.array()[0].username} and $mentions.array()[1].username have a: `, `${percent}% love connection.`); 
+  .addField(`${mentions.array()[0].username} and ${mentions.array()[1].username} have a: `, `${percent}% love connection.`); 
   message.channel.send(love);
 }
   else message.channel.send(`Please mention (2) people.`);
