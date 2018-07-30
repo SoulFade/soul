@@ -12,7 +12,7 @@ inv.aliases = new Discord.Collection();
 inv.playlists = new Discord.Collection();
 //Logs of readyness
 inv.on('ready', () => {
- inv.user.setActivity("?help", {type: "STREAMING", url: "httsp://twitch.tv/odaryt"})
+ inv.user.setActivity("?help", {type: "STREAMING", url: "https://twitch.tv/vellpro"})
 
 
   figlet('GD', function(err, data) {
