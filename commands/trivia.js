@@ -1,5 +1,5 @@
 exports.run = (inv, message, args) => {
-var filepath = "../trivia.txt";
+var filepath = "./trivia.txt";
 var anyoneStart = false;
 var anyoneStop = false;
 var anyoneAnswer = false;
