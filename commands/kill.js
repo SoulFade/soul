@@ -4,8 +4,8 @@ const config = require("../config.json")
 exports.run = (inv, message, args) => {
    const rando_imgs = [
 'https://giphy.com/gifs/monday-the-it-crowd-workplace-c6DIpCp1922KQ',
-'https://giphy.com/gifs/barney-stinson-neil-patrick-harris-suicide-jSxK33dwEMbkY ',
-'https://giphy.com/gifs/barney-stinson-neil-patrick-harris-suicide-jSxK33dwEMbkY ',
+'https://giphy.com/gifs/barney-stinson-neil-patrick-harris-suicide-jSxK33dwEMbkY',
+'https://giphy.com/gifs/barney-stinson-neil-patrick-harris-suicide-jSxK33dwEMbkY'
 ]
  const mention = message.mentions.members.first();
  const kill = new Discord.RichEmbed()
@@ -15,6 +15,6 @@ exports.run = (inv, message, args) => {
  .setFooter("Sent by: " + message.author.username)
  message.channel.send(mention + " you have been killed by: " + message.author.username + " :heart:")
  message.channel.send(kill)
- mention.send("You were hugged by: " + message.author.username + " in " + `${message.guild.name}`)
+ mention.send("You were killed by: " + message.author.username + " in " + `${message.guild.name}`)
 
 }
