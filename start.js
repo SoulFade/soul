@@ -12,8 +12,8 @@ inv.aliases = new Discord.Collection();
 inv.playlists = new Discord.Collection();
 //Logs of readyness
 inv.on('ready', () => {
-  inv.user.setPresence({game:{name: config.prefix + "help | V." + package.version ,type:1}}).catch(console.error);
-  inv.user.setStatus("online").catch(console.error);
+ inv.user.setActivity("?help", {type: "STREAMING", url: "httsp://twitch.tv/odaryt"})
+
 
   figlet('GD', function(err, data) {
     if (err) {
