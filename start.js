@@ -11,6 +11,12 @@ inv.commands = new Discord.Collection();
 inv.aliases = new Discord.Collection();
 inv.playlists = new Discord.Collection();
 //Logs of readyness
+const responseObject = {
+  "ayy": "Ayy, lmao!",
+  "wat": "Say what?",
+  "lol": "lol indeed",
+  "odii": "is nub"
+};
 inv.on('ready', () => {
  inv.user.setActivity("?help", {type: "STREAMING", url: "https://twitch.tv/vellpro"})
 
@@ -110,12 +116,7 @@ inv.on("message", message => {
       message.reply(`You currently have ${row.points} points, good going!`);
     });
   }
- const responseObject = {
-  "ayy": "Ayy, lmao!",
-  "wat": "Say what?",
-  "lol": "lol indeed",
-  "odii": "is nub"
-};
+
   if(responseObject[message.content]) {
     message.channel.send(responseObject[message.content]);
   } 
