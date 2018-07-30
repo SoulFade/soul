@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 exports.run = (inv, message, args) => {
 message.react("❤")
 const special_users = ["337343219128074240", "397150181184897027"];
