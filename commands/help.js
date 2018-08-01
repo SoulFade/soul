@@ -21,6 +21,9 @@ exports.run = (inv, message, args) => {
             .addField("Hug", "Sends an image, a text message and a DM to the mentioned user!")
             .addField("Memory", "?memory, displays the bot's memory usage")
             .addField("Weather", "?weather location, displays selected location's weather")
+            .addField("Translate", "?translate 'language' 'text', without the 's")
+            .addField("Love", "?love @user1 @user2, returns love connection between users")
+            .addField("Sex With", "?sexwith @user (NSFW command)")
             .addField("Features", "More features are being added!!")
             .setThumbnail(message.author.avatarURL)
             .setFooter("Server: " + `${message.guild.name}`, message.guild.iconURL);
