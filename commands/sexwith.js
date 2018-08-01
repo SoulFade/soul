@@ -17,7 +17,7 @@ if(!withyou) {
   let percent =  Math.floor(Math.random() * 100);
   const nightpercent = new Discord.RichEmbed()
   .setTitle("Enjoy Rate", message.author.avatarURL)
-  .setDescription(message.author.username + " and " + `${withyou.username}` + " enjoyed their night in a " + percent + "%" + "❤")
+  .setDescription(`${withyou.array()[0].username} and ${message.author.username} enjoyed their night in a: `, `${percent}% ❤`)
   .setColor(`0x00ff00`)
   .setTimestamp()
   .setFooter("Requested by " + message.author.username)
