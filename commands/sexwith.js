@@ -18,23 +18,23 @@ let response =  await where.awaitMessages(mg => {
     response = response.array()[0];
 
  if (response.content.toLowerCase() === "I am 18 years or older"){
-        let with = message.mentions.members.first();
-        message.channel.send(message.with.tag + " do you wish to have sex with: " + message.author.username + " ? (Type yes or no)")
+        let withyou = message.mentions.members.first();
+        message.channel.send(message.withyou.tag + " do you wish to have sex with: " + message.author.username + " ? (Type yes or no)")
         let sexwith =  await where.awaitMessages(mg => {
-        return mg.with.id === member.id;
+        return mg.withyou.id === member.id;
     }, {max: 1})
     sexwith = sexwith.array()[0];
     if (sexwith.content.toLowerCase() === "yes") {
     const sucess = newDiscord.RichEmbed()
     .setTitle("Success", message.author.avatarURL)
-    .setDescription(message.author.username + " had sex with " + message.with.username)
+    .setDescription(message.author.username + " had sex with " + message.withyou.username)
     .setColor(`0x00ff00`)
     .setTimestamp()
     message.channel.send(sucess)
   } else {
   const failed = new Discord.RichEmbed()
   .setTitle("Epic Fail", message.author.avatarURL)
-  .setDescription(message.author.usename + " failed at having sex with " + message.with.username)
+  .setDescription(message.author.usename + " failed at having sex with " + message.withyou.username)
   .setColor(`#ff0000`)
   .setTimestamp()
   message.channel.send(failed)
@@ -44,6 +44,6 @@ let response =  await where.awaitMessages(mg => {
     
     
 else {
-    message.channel.send("You're :underage", sorry!")
+    message.channel.send("You're :underage, sorry!")
     }
 }
