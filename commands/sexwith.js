@@ -9,7 +9,7 @@ if(!withyou) {
    const success = new Discord.RichEmbed()
    .setTitle("Success!", message.author.avatarURL)
    .setColor(`0x00ff00`)
-   .setDescription("You were succesful at having sex with " + withyou.username)
+   .setDescription("You were succesful at having sex with " + message.withyou.username)
    .setFooter("Requested by: " + message.author.username)
    .setTimestamp()
    message.channel.send(success)
