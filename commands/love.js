@@ -9,10 +9,9 @@ exports.run = (inv, message, args) => {
         let percent = special ? 100 : Math.floor(Math.random() * 100);
         let extra = "";
         const extras = {
-            "397150181184897027": "She belongs with Alphi#9839 <3",
-            "337343219128074240": "He belongs to Enchantress#7679 <3"
+            "397150181184897027": "Enchantress belongs to Alphi#9839 <3",
+            "337343219128074240": "Alphi belongs to Enchantress#7679 <3"
         };
-        percent = 0;
         const alwaysMatch = [
             ["397150181184897027", "337343219128074240"]
         ];
