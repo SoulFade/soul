@@ -11,7 +11,7 @@ const underage = new Discord.RichEmbed()
 .setFooter("Requested by: " + message.author.username)
 .setTimestamp()
 message.channel.send(underage)
-let where = message.channel.id
+let where = inv.channels.get(message.channel.id)
 let response =  await where.awaitMessages(mg => {
         return mg.author.id === member.id;
     }, {max: 1})
@@ -20,7 +20,8 @@ let response =  await where.awaitMessages(mg => {
  if (response.content.toLowerCase() === "I am 18 years or older"){
         let withyou = message.mentions.members.first();
         message.channel.send(message.withyou.tag + " do you wish to have sex with: " + message.author.username + " ? (Type yes or no)")
-        let sexwith =  await where.awaitMessages(mg => {
+         let channel = inv.channels.get(message.channel.id)
+         let sexwith =  await channel.awaitMessages(mg => {
         return mg.withyou.id === member.id;
     }, {max: 1})
     sexwith = sexwith.array()[0];
