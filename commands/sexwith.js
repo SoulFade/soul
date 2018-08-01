@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 exports.run = async (inv, message, args) => {
-const withyou = message.mentions.members.first();
+const withyou = message.mentions.users;
 if(!withyou) {
   message.react("❌")
  return message.channel.send(":x: | Please tag a member in order to request sex! (Command won't work if no one is tagged...) ") 
@@ -17,7 +17,7 @@ if(!withyou) {
   let percent =  Math.floor(Math.random() * 100);
   const nightpercent = new Discord.RichEmbed()
   .setTitle("Enjoy Rate", message.author.avatarURL)
-  .setDescription(`${withyou.array()[0].username} and ${message.author.username} enjoyed their night in a: `, `${percent}% ❤`)
+  .addField(`${withyou.array()[0].username} and ${message.author.username} enjoyed their night in a: `, `${percent}% ❤`)
   .setColor(`0x00ff00`)
   .setTimestamp()
   .setFooter("Requested by " + message.author.username)
