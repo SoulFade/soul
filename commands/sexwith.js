@@ -18,7 +18,6 @@ let response =  await where.awaitMessages(mg => {
         return mg.author.id === inv.users.get(message.author.id);
     }, {max: 1})
     response = response.array()[0];
-    let response = response.array()[0];
     if (response.content.toLowerCase() === "yes") {
     const sucess = newDiscord.RichEmbed()
     .setTitle("Success", message.author.avatarURL)
