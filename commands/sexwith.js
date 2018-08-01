@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 exports.run = async (inv, message, args) => {
 message.react("👉", "👌", "🔞")
+const withyou = message.mentions.members.first();
 const underage = new Discord.RichEmbed()
 .setTitle("NSFW Command", message.author.avatarURL)
 .setColor(`#ff0000`)
@@ -11,7 +12,7 @@ const underage = new Discord.RichEmbed()
 message.channel.send(underage)
 let where = inv.channels.get(message.channel.id)
 let response =  await where.awaitMessages(mg => {
-        return mg.author.id === member.id;
+        return mg.author.id === message.withyou.id;
     }, {max: 1})
     response = response.array()[0];
 
