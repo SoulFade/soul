@@ -9,7 +9,8 @@ const {
 } = require('discord.js');
 exports.run = async (inv, message, args) => {
 
-
+    message.react("🎵")
+    message.react("✅")
     let url = args.slice(0).join(" ");
     if (!url) return message.channel.send(":x: | Add a link or tell me what to search in order to play.");
 
