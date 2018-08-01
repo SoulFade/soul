@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const withyou = message.mentions.members.first();
 exports.run = async (inv, message, args) => {
+const withyou = message.mentions.members.first();
 if(!withyou) {
   message.react("❌")
  return message.channel.send(":x: | Please tag a member in order to request sex! (Command won't work if no one is tagged...) ") 
