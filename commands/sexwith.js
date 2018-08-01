@@ -8,7 +8,7 @@ const underage = new Discord.RichEmbed()
 .setColor(`#ff0000`)
 .setDescription("This is a NSFW command, it is recommended to use it in NSFW channels to avoid mutes/kicks/bans or warnings.")
 .addField("Please type 'I am 18 years or older' to procceed")
-.setFooter("Requested by: " + message.author.username")
+.setFooter("Requested by: " + message.author.username)
 .setTimestamp()
 message.channel.send(underage)
 let where = message.channel.id
