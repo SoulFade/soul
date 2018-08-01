@@ -1,7 +1,13 @@
 const Discord = require('discord.js');
-exports.run = async (inv, message, args) => {
-message.react("👉", "👌", "🔞")
 const withyou = message.mentions.members.first();
+exports.run = async (inv, message, args) => {
+if(!withyou) {
+  message.react("❌")
+ return message.channel.send(":x: | Please tag a member in order to request sex! (Command won't work if no one is tagged...) ") 
+} else {
+ message.react("👉")
+ message.react("👌")
+ message.react("🔞")
 const underage = new Discord.RichEmbed()
 .setTitle("NSFW Command", message.author.avatarURL)
 .setColor(`#ff0000`)
@@ -16,8 +22,7 @@ let response =  await where.awaitMessages(mg => {
     }, {max: 1})
     response = response.array()[0];
 
- if (response.content.toLowerCase() === "I am 18 years or older"){
-        let withyou = message.mentions.members.first();
+ if (response.content.toLowerCase() === "I am 18 years or older") {
         message.channel.send(message.withyou.tag + " do you wish to have sex with: " + message.author.username + " ? (Type yes or no)")
          let channel = inv.channels.get(message.channel.id)
          let sexwith =  await channel.awaitMessages(mg => {
@@ -42,5 +47,6 @@ let response =  await where.awaitMessages(mg => {
   }
  if(response.content.toLowercase() !== "I am 18 years or older") {
         message.channel.send("You're underage :underage:, sorry :no_good:")
+  }
  }
 }
