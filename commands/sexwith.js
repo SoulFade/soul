@@ -14,13 +14,13 @@ if(!withyou) {
    .setTimestamp()
    message.channel.send(success)
   let percent =  Math.floor(Math.random() * 100);
-  const percent = new Discord.RichEmbed()
+  const nightpercent = new Discord.RichEmbed()
   .setTitle("Enjoy Rate", message.author.avatarURL)
   .setDescription(message.author.username + " and " + withyou.username + " enjoyed their night in a " + percent + "%")
   .setColor(`0x00ff00`)
   .setTimestamp()
   .setFooter("Requested by " + message.author.username)
-  message.channel.send(percent)
+  message.channel.send(nightpercent)
 
 
  }
