@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-exports.run = async (inv, message, args, member) => {
+exports.run = async (inv, message, args) => {
 message.react("👉", "👌", "🔞")
 const underage = new Discord.RichEmbed()
 .setTitle("NSFW Command", message.author.avatarURL)
@@ -20,7 +20,7 @@ let response =  await where.awaitMessages(mg => {
         message.channel.send(message.withyou.tag + " do you wish to have sex with: " + message.author.username + " ? (Type yes or no)")
          let channel = inv.channels.get(message.channel.id)
          let sexwith =  await channel.awaitMessages(mg => {
-        return mg.withyou.id === member.id;
+        return mg.withyou.id === message.withyou.id;
     }, {max: 1})
     sexwith = sexwith.array()[0];
     if (sexwith.content.toLowerCase() === "yes") {
