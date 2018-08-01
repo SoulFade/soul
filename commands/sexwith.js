@@ -31,7 +31,8 @@ let response =  await where.awaitMessages(mg => {
     .setColor(`0x00ff00`)
     .setTimestamp()
     message.channel.send(sucess)
-  } else {
+  } 
+ } else {
   const failed = new Discord.RichEmbed()
   .setTitle("Epic Fail", message.author.avatarURL)
   .setDescription(message.author.usename + " failed at having sex with " + message.withyou.username)
