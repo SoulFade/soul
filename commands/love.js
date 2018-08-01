@@ -1,21 +1,30 @@
 const Discord = require('discord.js');
 exports.run = (inv, message, args) => {
+    message.react("❤");
+    const special_users = ["337343219128074240", "397150181184897027"];
     const mentions = message.mentions.users;
     if (mentions.size === 2) {
-        message.react("❤");
-        const special_users = ["337343219128074240", "397150181184897027"];
         let special = false;
-        special_users.forEach((id) => mentions.has(id) ? special = true : false);
+        special_users.forEach((id) => {
+            if (mentions.has(id)) {
+                special = true;
+            }
+        });
         let percent = special ? 100 : Math.floor(Math.random() * 100);
         let extra = "";
         const extras = {
-            "397150181184897027": "Enchantress belongs to Alphi#9839 <3",
-            "337343219128074240": "Alphi belongs to Enchantress#7679 <3"
+            "397150181184897027": "She belongs with Alphie <3",
+            "337343219128074240": "He belongs to Enchantress <3"
         };
         const alwaysMatch = [
             ["397150181184897027", "337343219128074240"]
         ];
-        Object.keys(extras).forEach((id) => mentions.has(id) ? extra += "\n" + extras[id] : false);
+        Object.keys(extras).forEach((id) => {
+            if (mentions.has(id)) {
+                extra += "\n" + extras[id];
+                percent = 0;
+            }
+        });
         alwaysMatch.forEach((ids) => {
             if (mentions.has(ids[0]) && mentions.has(ids[1])) percent = 100;
         });
