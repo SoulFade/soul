@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-exports.run = (inv, message, args) => {
+exports.run = async (inv, message, args) => {
 message.react("👉")
 message.react("👌")
 message.react("🔞")
