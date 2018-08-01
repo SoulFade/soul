@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
-exports.run = async (inv, message, args) => {
-message.react("👉")
-message.react("👌")
-message.react("🔞")
+exports.run = async (inv, message, args, member) => {
+message.react("👉", "👌", "🔞")
 const underage = new Discord.RichEmbed()
 .setTitle("NSFW Command", message.author.avatarURL)
 .setColor(`#ff0000`)
