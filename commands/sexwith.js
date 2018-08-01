@@ -24,6 +24,9 @@ let response =  await where.awaitMessages(mg => {
         return mg.withyou.id === member.id;
     }, {max: 1})
     sexwith = sexwith.array()[0];
+    else {
+        message.channel.send("You're underage :underage:, sorry :no_good:")
+    }
     if (sexwith.content.toLowerCase() === "yes") {
     const sucess = newDiscord.RichEmbed()
     .setTitle("Success", message.author.avatarURL)
@@ -40,10 +43,4 @@ let response =  await where.awaitMessages(mg => {
   message.channel.send(failed)
   }
     
-    
-    
-    
-else {
-    message.channel.send("You're :underage, sorry!")
-    }
 }
