@@ -5,14 +5,12 @@ if(!withyou) {
   message.react("❌")
  return message.channel.send(":x: | Please tag a member in order to request sex! (Command won't work if no one is tagged...) ") 
 } else {
- message.react("👉")
- message.react("👌")
  message.react("🔞")
 const underage = new Discord.RichEmbed()
 .setTitle("NSFW Command", message.author.avatarURL)
 .setColor(`#ff0000`)
 .setDescription("This is a NSFW command, it is recommended to use it in NSFW channels to avoid mutes/kicks/bans or warnings.")
-.addField("Please type 'I am 18 years or older' to procceed")
+.addField("Please type 'Agree' to procceed")
 .setFooter("Requested by: " + message.author.username)
 .setTimestamp()
 message.channel.send(underage)
@@ -22,7 +20,7 @@ let response =  await where.awaitMessages(mg => {
     }, {max: 1})
     response = response.array()[0];
 
- if (response.content.toLowerCase() === "I am 18 years or older") {
+ if (response.content.toLowerCase() === "Agree") {
         message.channel.send(message.withyou.tag + " do you wish to have sex with: " + message.author.username + " ? (Type yes or no)")
          let channel = inv.channels.get(message.channel.id)
          let sexwith =  await channel.awaitMessages(mg => {
@@ -45,7 +43,7 @@ let response =  await where.awaitMessages(mg => {
   .setTimestamp()
   message.channel.send(failed)
   }
- if(response.content.toLowercase() !== "I am 18 years or older") {
+ if(response.content.toLowercase() !== "Agree") {
         message.channel.send("You're underage :underage:, sorry :no_good:")
   }
  }
