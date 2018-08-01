@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 exports.run = (inv, message, args) => {
+    const mentions = message.mentions.users;
     if (mentions.size === 2) {
         message.react("❤");
         const special_users = ["337343219128074240", "397150181184897027"];
-        const mentions = message.mentions.users;
         let special = false;
         special_users.forEach((id) => mentions.has(id) ? special = true : false);
         let percent = special ? 100 : Math.floor(Math.random() * 100);
