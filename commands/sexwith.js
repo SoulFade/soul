@@ -39,7 +39,7 @@ let response =  await where.awaitMessages(mg => {
   .setTimestamp()
   message.channel.send(failed)
   }
- if(response.content.toLowercase() !=== "I am 18 years or older") {
+ if(response.content.toLowercase() !== "I am 18 years or older") {
         message.channel.send("You're underage :underage:, sorry :no_good:")
  }
 }
