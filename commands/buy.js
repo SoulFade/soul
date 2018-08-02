@@ -3,7 +3,7 @@ const package = require("../package.json");
 const config = require("../config.json");
 const database = require("sqlite3objs");
 require("./user.js");
-const userdb = new database("./userboard.db");
+const userdb = new database("../userboard.db");
 
 exports.run = (inv, message, args) => {
     let user = userdb.select("users", {
@@ -11,10 +11,17 @@ exports.run = (inv, message, args) => {
             userID: message.author.id
         }
     });
-    if (!user.length) userdb.insert("users", {
-        userID: message.author.id,
-        cash: 0
-    });
+    if (!user.length) {
+        userdb.insert("users", {
+            userID: message.author.id,
+            cash: 0
+        });
+        user = userdb.select("users", {
+            where: {
+                userID: message.author.id
+            }
+        });
+    }
     user = user[0];
     const update = (obj) => {
         userdb.update("users", {
