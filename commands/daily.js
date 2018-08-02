@@ -29,6 +29,8 @@ exports.run = (inv, message, args) => {
         userdb.update("users", {
             id: user.id
         }, obj);
+        console.log(user);
+        console.log(user.id);
         let uu = userdb.select("users", {
             where: {
                 userID: message.author.id
