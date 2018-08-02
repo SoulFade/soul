@@ -6,7 +6,7 @@ require("./user.js");
 const userdb = new database("../userboard.db");
 
 exports.run = (inv, message, args) => {
-    let toSend = args[1] || -1;
+    let toSend = parseInt(args[1]) || -1;
     let user = userdb.select("users", {
         where: {
             userID: message.author.id
@@ -47,5 +47,5 @@ exports.run = (inv, message, args) => {
     }, {
         cash: touser.cash + toSend
     });
-    message.reply(`sent ${toSend} to <@${touser.id}>!`);
+    message.reply(`sent ${toSend} to <@${touser.userID}>!`);
 };
