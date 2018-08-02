@@ -9,6 +9,15 @@ exports.run = (inv, message, args) => {
     let user = userdb.select("users", {where: {userID: message.author.id}});
     if (!user.length) userdb.insert("users", {userID: message.author.id, cash: 0});
     user = user[0];
-    const update = (obj) => userdb.update("users", {id: user.id}, obj);
+    const update = (obj) => {
+        userdb.update("users", {
+            id: user.id
+        }, obj);
+        user = userdb.select("users", {
+            where: {
+                id: user.id
+            }
+        })[0];
+    };
     //
 };

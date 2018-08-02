@@ -21,7 +21,7 @@ exports.run = (inv, message, args) => {
         userdb.update("users", {
             id: user.id
         }, obj);
-        user = userbd.select("users", {
+        user = userdb.select("users", {
             where: {
                 id: user.id
             }
