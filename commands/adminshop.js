@@ -3,7 +3,7 @@ const package = require("../package.json");
 const config = require("../config.json");
 const database = require("sqlite3objs");
 require("./user.js");
-const userdb = new database("./userboard.db");
+const userdb = new database("../userboard.db");
 
 exports.run = (inv, message, args) => {
     let user = userdb.select("users", {where: {userID: message.author.id}});
