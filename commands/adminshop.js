@@ -10,5 +10,5 @@ exports.run = (inv, message, args) => {
     if (!user.length) userdb.insert("users", {userID: message.author.id, cash: 0});
     user = user[0];
     const update = (obj) => userdb.update("users", {id: user.id}, obj);
-    // test
+    // test 100101
 };
