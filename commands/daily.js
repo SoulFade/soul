@@ -20,18 +20,18 @@ exports.run = (inv, message, args) => {
         userdb.update("users", {
             id: user.id
         }, obj);
-        user = userdb.select("users", {
+        return(user = userdb.select("users", {
             where: {
                 id: user.id
             }
-        })[0];
+        })[0]);
     };
     if (new Date().getTime() < user.lastDaily + (1000 * 60 * 60 * 24)) {
         return (message.reply("Please wait the full 24 hrs before claiming again!"));
     }
-    update({
+    user = update({
         cash: user.cash + 100
     });
-    message.reply(JSON.stringify(user,null,4));
+    message.reply(typeof(user));
     //message.reply(`You have received your daily 100 VBucks!\nYou now have ${user.cash} VBucks!`);
 };
