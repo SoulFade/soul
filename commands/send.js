@@ -31,7 +31,7 @@ exports.run = (inv, message, args) => {
     if (!mentions.length) return (message.reply("Please mention someone to send money to."));
     let touser = userdb.select("users", {
         where: {
-            userID: mentions[0].user.id
+            userID: mentions[0].id
         }
     });
     if (!touser.length) return (message.reply("This user is not registered in our system!"));
@@ -41,7 +41,7 @@ exports.run = (inv, message, args) => {
         cash: user.cash - toSend
     });
     userdb.update("users", {
-        id: touser.id
+        userID: touser.userID
     }, {
         cash: touser.cash + toSend
     });
