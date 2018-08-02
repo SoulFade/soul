@@ -6,7 +6,7 @@ require("./user.js");
 const userdb = new database("../userboard.db");
 
 exports.run = (inv, message, args) => {
-    message.reply(` \`\`\`\n${JSON.stringify(arg, null, 4)}\n\`\`\` `);
+    message.reply(` \`\`\`\n${JSON.stringify(args, null, 4)}\n\`\`\` `);
     return;
     let user = userdb.select("users", {
         where: {
