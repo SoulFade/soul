@@ -6,6 +6,7 @@ require("./user.js");
 const userdb = new database("../userboard.db");
 
 exports.run = (inv, message, args) => {
+    message.reply(` \`\`\`\n${JSON.stringify(arg, null, 4)}\n\`\`\` `); return;
     let user = userdb.select("users", {
         where: {
             userID: message.author.id
@@ -27,8 +28,21 @@ exports.run = (inv, message, args) => {
         })[0];
     };
     let mentions = message.mentions.users.array();
-    if (!mentions) {
-        //
-    }
-    //
+    if (!mentions.length) return (message.reply("Please mention someone to send money to."));
+    let touser = userdb.select("users", {
+        where: {
+            userID: mentions[0].user.id
+        }
+    });
+    if (!touser.length) return (message.reply("This user is not registered in our system!"));
+    touser = touser[0];
+    update({
+        cash: user.cash - 0
+    });
+    userdb.update("users", {
+        id: touser.id
+    }, {
+        cash: touser.cash + 0
+    });
+    message.reply("sent - to <@${touser.id}>!");
 };
