@@ -25,24 +25,23 @@ exports.run = (inv, message, args) => {
     }
     user = user[0];
     console.log({user});
-    const $update = (obj) => {
+    const update = (obj) => {
         userdb.update("users", {
-            id: user.id
+            userID: message.author.id
         }, obj);
         console.log(user);
         console.log(user.id);
-        let uu = userdb.select("users", {
+        user = userdb.select("users", {
             where: {
-                id: user.id
+                userID: message.author.id
             }
-        });
-        console.log(uu);
+        })[0];
     };
     if (new Date().getTime() < user.lastDaily + (1000 * 60 * 60 * 24)) {
         return (message.reply("Please wait the full 24 hrs before claiming again!"));
     }
-    $update({
+    update({
         cash: user.cash + 100
     });
-    //message.reply(`You have received your daily 100 VBucks!\nYou now have ${user.cash} VBucks!`);
+    message.reply(`You have received your daily 100 VBucks!\nYou now have ${user.cash} VBucks!`);
 };
