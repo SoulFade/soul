@@ -46,6 +46,7 @@
     "ms": "^2.1.1",
     "fs": "0.0.1-security",
     "opusscript": "^0.0.6",
-    "simple-youtube-api": "^5.0.2"
+    "simple-youtube-api": "^5.0.2",
+    "sqlite3objs": "^1.2.2"
   }
 }
