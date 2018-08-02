@@ -135,4 +135,4 @@ inv.on("message", message => {
 
 
 
-inv.login(process.env.token);
+inv.login(config.token);
