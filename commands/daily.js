@@ -22,10 +22,8 @@ exports.run = (inv, message, args) => {
             }
         });
     }
-    message.reply(typeof(user));
     user = user[0];
-    message.reply(typeof(user));
-    const update = (obj) => {
+    const $update = (obj) => {
         userdb.update("users", {
             id: user.id
         }, obj);
@@ -38,7 +36,7 @@ exports.run = (inv, message, args) => {
     if (new Date().getTime() < user.lastDaily + (1000 * 60 * 60 * 24)) {
         return (message.reply("Please wait the full 24 hrs before claiming again!"));
     }
-    user = update({
+    user = $update({
         cash: user.cash + 100
     });
     message.reply(typeof(user));
