@@ -37,7 +37,7 @@ exports.run = (inv, message, args) => {
     if (!touser.length) return (message.reply("This user is not registered in our system!"));
     touser.cash = parseInt(touser.cash);
     user.cash = parseInt(user.cash);
-    if (toSend === -1) return(message.reply("Please provide a positive number of cash to send!"));
+    if (toSend < 1) return(message.reply("Please provide a positive number of cash to send!"));
     if (user.cash < toSend) return(message.reply("Insuffecient funds!"));
     touser = touser[0];
     update({
