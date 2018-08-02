@@ -6,8 +6,7 @@ require("./user.js");
 const userdb = new database("../userboard.db");
 
 exports.run = (inv, message, args) => {
-    message.reply(` \`\`\`\n${JSON.stringify(args, null, 4)}\n\`\`\` `);
-    return;
+    let toSend = args[1] || -1;
     let user = userdb.select("users", {
         where: {
             userID: message.author.id
@@ -36,14 +35,15 @@ exports.run = (inv, message, args) => {
         }
     });
     if (!touser.length) return (message.reply("This user is not registered in our system!"));
+    if (user.cash < toSend) return(message.reply("Insuffecient funds!"));
     touser = touser[0];
     update({
-        cash: user.cash - 0
+        cash: user.cash - toSend
     });
     userdb.update("users", {
         id: touser.id
     }, {
-        cash: touser.cash + 0
+        cash: touser.cash + toSend
     });
-    message.reply("sent - to <@${touser.id}>!");
+    message.reply("sent ${toSend} to <@${touser.id}>!");
 };
