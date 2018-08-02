@@ -38,7 +38,8 @@ exports.run = (inv, message, args) => {
         return (message.reply("Please wait the full 24 hrs before claiming again!"));
     }
     update({
-        cash: user.cash + 100
+        cash: user.cash + 100,
+        lastDaily: new Date().getTime()
     });
     message.reply(`You have received your daily 100 VBucks!\nYou now have ${user.cash} VBucks!`);
 };
