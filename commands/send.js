@@ -38,6 +38,7 @@ exports.run = (inv, message, args) => {
     touser.cash = parseInt(touser.cash);
     user.cash = parseInt(user.cash);
     if (user.cash < toSend) return(message.reply("Insuffecient funds!"));
+    if (toSend === -1) return(message.reply("Please provide a positive number of cash to send!"));
     touser = touser[0];
     update({
         cash: user.cash - toSend
