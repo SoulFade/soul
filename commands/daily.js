@@ -33,7 +33,7 @@ exports.run = (inv, message, args) => {
         console.log(user.id);
         let uu = userdb.select("users", {
             where: {
-                userID: message.author.id
+                id: user.id
             }
         });
         console.log(uu);
