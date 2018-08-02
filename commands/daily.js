@@ -27,6 +27,7 @@ exports.run = (inv, message, args) => {
         userdb.update("users", {
             id: user.id
         }, obj);
+        message.reply(typeof(user))
         return (user = userdb.select("users", {
             where: {
                 id: user.id
