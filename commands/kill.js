@@ -1,4 +1,4 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
 exports.run = (inv, message, args) {
  message.react("💀")
  message.react("☠")
