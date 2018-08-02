@@ -6,9 +6,25 @@ require("./user.js");
 const userdb = new database("../userboard.db");
 
 exports.run = (inv, message, args) => {
-    let user = userdb.select("users", {where: {userID: message.author.id}});
-    if (!user.length) userdb.insert("users", {userID: message.author.id, cash: 0});
+    let user = userdb.select("users", {
+        where: {
+            userID: message.author.id
+        }
+    });
+    if (!user.length) userdb.insert("users", {
+        userID: message.author.id,
+        cash: 0
+    });
     user = user[0];
-    const update = (obj) => userdb.update("users", {id: user.id}, obj);
-    // test 100101
+    const update = (obj) => {
+        userdb.update("users", {
+            id: user.id
+        }, obj);
+        user = userbd.select("users", {
+            where: {
+                id: user.id
+            }
+        })[0];
+    };
+    //
 };
