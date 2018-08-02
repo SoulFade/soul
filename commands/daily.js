@@ -32,5 +32,6 @@ exports.run = (inv, message, args) => {
     update({
         cash: user.cash + 100
     });
-    message.reply(`You have received your daily 100 VBucks!\nYou now have ${user.cash} VBucks!`);
+    message.reply(JSON.stringify(user,null,4));
+    //message.reply(`You have received your daily 100 VBucks!\nYou now have ${user.cash} VBucks!`);
 };
