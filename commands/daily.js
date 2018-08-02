@@ -24,13 +24,10 @@ exports.run = (inv, message, args) => {
         });
     }
     user = user[0];
-    console.log({user});
     const update = (obj) => {
         userdb.update("users", {
             userID: message.author.id
         }, obj);
-        console.log(user);
-        console.log(user.id);
         user = userdb.select("users", {
             where: {
                 userID: message.author.id

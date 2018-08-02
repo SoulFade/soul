@@ -6,7 +6,8 @@ require("./user.js");
 const userdb = new database("../userboard.db");
 
 exports.run = (inv, message, args) => {
-    message.reply(` \`\`\`\n${JSON.stringify(arg, null, 4)}\n\`\`\` `); return;
+    message.reply(` \`\`\`\n${JSON.stringify(arg, null, 4)}\n\`\`\` `);
+    return;
     let user = userdb.select("users", {
         where: {
             userID: message.author.id
@@ -19,11 +20,11 @@ exports.run = (inv, message, args) => {
     user = user[0];
     const update = (obj) => {
         userdb.update("users", {
-            id: user.id
+            userID: message.author.id
         }, obj);
         user = userdb.select("users", {
             where: {
-                id: user.id
+                userID: message.author.id
             }
         })[0];
     };

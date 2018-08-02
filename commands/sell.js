@@ -18,11 +18,11 @@ exports.run = (inv, message, args) => {
     user = user[0];
     const update = (obj) => {
         userdb.update("users", {
-            id: user.id
+            userID: message.author.id
         }, obj);
         user = userdb.select("users", {
             where: {
-                id: user.id
+                userID: message.author.id
             }
         })[0];
     };
