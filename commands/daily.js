@@ -22,7 +22,9 @@ exports.run = (inv, message, args) => {
             }
         });
     }
+    message.reply(typeof(user));
     user = user[0];
+    message.reply(typeof(user));
     const update = (obj) => {
         userdb.update("users", {
             id: user.id
