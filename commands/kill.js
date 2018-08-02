@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 exports.run = (inv, message, args) {\
  message.react("💀")
- message.react("☠
+ message.react("☠")
  let mentions = message.mentions.users;
  const kill = new Discord.RichEmbed()
  .setTitle("Death Request", message.author.username)
