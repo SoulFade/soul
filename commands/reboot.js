@@ -19,7 +19,7 @@ exports.run = async (inv, message) => {
     if (reason === "kill") {
       await message.channel.send("Rebooting now...");
       await inv.destroy();
-      process.exit();
+      require("child_process").exec("vellrestart");
     } else if (reason === "time") {
       return message.channel.send("Reboot timed out.");
     } else if (reason === "abort") {
