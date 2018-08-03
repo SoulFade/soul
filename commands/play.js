@@ -52,8 +52,8 @@ exports.run = async (inv, message, args) => {
 
             var i = 1;
             const emb = new RichEmbed()
-            .setColor("#0cbddd")
-            .setDescription(`**Choose song from 1 to 5**\n\n${videos.map(val => `${i++} | ${val.title}`).join("\n")}`)
+                .setColor("#0cbddd")
+                .setDescription(`**Choose song from 1 to 5**\n\n${videos.map(val => `${i++} | ${val.title}`).join("\n")}`)
             await mm.edit(emb);
 
             const collector = new MessageCollector(message.channel, (message2) => message2.author.id === message.author.id && message2.content > 0 && message2.content < 6, {
@@ -88,7 +88,7 @@ async function handleMusic(message, video, vc, mm) {
         duration: video.durationSeconds
     };
 
-    if(!GuildQueue){
+    if (!GuildQueue) {
         GuildQueue = {
             songs: [],
             channel: message.channel,
@@ -99,7 +99,7 @@ async function handleMusic(message, video, vc, mm) {
             volume: 0.5,
             maxLength: 3600
         }
-        if(song.duration > GuildQueue.maxLength) return message.reply(":warning: This song is long. Please change guild settings to allow longer songs!");
+        if (song.duration > GuildQueue.maxLength) return message.reply(":warning: This song is long. Please change guild settings to allow longer songs!");
         queue.set(message.guild.id, GuildQueue);
         GuildQueue.songs.push(song);
         try {
@@ -112,46 +112,49 @@ async function handleMusic(message, video, vc, mm) {
             queue.delete(message.guild.id);
         }
     } else {
-        if(song.duration > GuildQueue.maxLength) return message.reply(":x: | This song is bigger than the max length of the queue. Change guild settings to allow longer songs.");
-        if(GuildQueue.songs.reduce((prev, song) => prev + song.duration, 0) > GuildQueue.maxLength) return mm.edit("You reached maximum song length!");
+        if (song.duration > GuildQueue.maxLength) return message.reply(":x: | This song is bigger than the max length of the queue. Change guild settings to allow longer songs.");
+        if (GuildQueue.songs.reduce((prev, song) => prev + song.duration, 0) > GuildQueue.maxLength) return mm.edit("You reached maximum song length!");
         GuildQueue.songs.push(song);
         mm.edit(`Added **${song.name}** to queue!`);
     }
 
 }
 
-function startPlaying(guild, song){
-      const GuildQueue = queue.get(guild.id);
+function startPlaying(guild, song) {
+    const GuildQueue = queue.get(guild.id);
 
-      if(!song){
+    if (!song) {
 
-      };
+    };
 
-      const stream = ytdl(song.url, {audioonly: true});
+    const stream = ytdl(song.url, {
+        audioonly: true
+    });
 
-      const dispatcher = GuildQueue.connection.playStream(stream);
+    const dispatcher = GuildQueue.connection.playStream(stream);
 
-      dispatcher.on("start", () => {
-          GuildQueue.playing = true;
-          GuildQueue.channel.send(`Started playing **${song.name}** !`);
-      });
+    dispatcher.on("start", () => {
+        GuildQueue.playing = true;
+        GuildQueue.channel.send(`Started playing **${song.name}** !`);
+    });
 
-      dispatcher.on("end", (reason) => {
-          if(typeof reason !== "undefined"){
-              console.log(reason);
-          };
+    dispatcher.on("end", (reason) => {
+        if (typeof reason !== "undefined") {
+            console.log(reason);
+        };
 
-          setTimeout(() => {
-              GuildQueue.songs.shift();
-              startPlaying(guild, GuildQueue.songs[0]);
-          }, 1000);
-      });
+        setTimeout(() => {
+            GuildQueue.songs.shift();
+            if (!GuildQueue.songs.length) return;
+            startPlaying(guild, GuildQueue.songs[0]);
+        }, 1000);
+    });
 
-      dispatcher.on("error", (err) => {
-          console.log(err);
-      });
+    dispatcher.on("error", (err) => {
+        console.log(err);
+    });
 
-      dispatcher.setVolume(GuildQueue.volume);
+    dispatcher.setVolume(GuildQueue.volume);
 }
 
 module.exports.info = {
