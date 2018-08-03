@@ -1,7 +1,8 @@
 const queue = new Map();
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
-const KEY = process.env.KEY;
+const config = require("../config.json");
+const KEY = config.KEY;
 const youtube = new YouTube(KEY);
 const {
     MessageCollector,
