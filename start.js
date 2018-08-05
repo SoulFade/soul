@@ -10,20 +10,45 @@ const inv = new Discord.Client();
 inv.commands = new Discord.Collection();
 inv.aliases = new Discord.Collection();
 inv.playlists = new Discord.Collection();
-//Logs of readyness
-const responseObject = {
-    "ayy": "Ayy, lmao!",
-    "wat": "Say what?",
-    "lol": "lol indeed",
-    "odii": "is nub"
-};
-inv.on('ready', () => {
-    inv.user.setActivity("?help", {
-        type: "STREAMING",
-        url: "https://twitch.tv/vellpro"
-    })
+const Enmap = require('enmap');
+const Provider = require('enmap-sqlite');
+const defaultSettings = {
+  prefix: "?",
+  modLogChannel: "logs",
+  modRole: "Moderator",
+  adminRole: "Administrator",
+  welcomeChannel: "welcome",
+  welcomeMessage: "Welcome {{user}} to the server! Emjoy your stay!! :3"
+}
+inv.on("guildCreate", guild => {
+  inv.settings.set(guild.id, defaultSettings);
+});
 
+inv.on("guildDelete", guild => {
+  // Removing an element uses `delete(key)`
+  inv.settings.delete(guild.id);
+});
 
+inv.on("guildMemberAdd", member => {
+  let welcomeMessage = inv.settings.get(member.guild.id, "welcomeMessage");
+  welcomeMessage = welcomeMessage.replace("{{user}}", member.user.tag)
+  
+  // we'll send to the welcome channel.
+  member.guild.channels
+    .find("name", inv.settings.get(member.guild.id, "welcomeChannel"))
+    .send(welcomeMessage)
+    .catch(console.error);
+});
+inv.on("ready", async () => {
+  // We need to ensure that every single guild has a configuration when we boot. 
+  // First loop through all guilds
+  inv.guilds.forEach(guild => {
+    // For this guild, check if enmap has its guild conf
+    if(!inv.settings.has(guild.id)) {
+       // add it if it's not there, add it!
+       inv.settings.set(guild.id, defaultSettings);
+    }
+  });
     figlet('GD', function(err, data) {
         if (err) {
             console.log('Something went wrong...');
@@ -64,11 +89,12 @@ fs.readdir("./events/", (err, files) => {
     });
 });
 
-inv.on("message", message => {
+inv.on("message", async (message) => {
     if (message.author.bot) return;
     if (message.content.indexOf(config.prefix) !== 0) return;
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
+    const guildConf = inv.settings.get(message.guild.id) || defaultSettings;
     try {
         if (message.channel.type === "dm") {
             let embed1 = new Discord.RichEmbed() //info embed on ticket
