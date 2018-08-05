@@ -22,7 +22,7 @@
   "homepage": "Nothing yet",
   "dependencies": {
     "discord.js": "^11.3.2",
-    "enmap": "^2.6.3",
+    "enmap": "^3.0.1",
     "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
     "express": "^4.16.3",
@@ -47,6 +47,7 @@
     "fs": "0.0.1-security",
     "opusscript": "^0.0.6",
     "simple-youtube-api": "^5.0.2",
-    "sqlite3objs": "^1.2.2"
+    "sqlite3objs": "^1.2.2",
+    "enmap-sqlite": "^2.0.3"
   }
 }
