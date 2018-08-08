@@ -27,6 +27,7 @@ exports.run = (inv, message, args) => {
             .addField("Love ❤", "?love @user1 @user2, returns love connection between users")
             .addField("Sex With 🔞", "?sexwith @user (NSFW command)")
             .addField("Features 🔜", "More features are being added!!")
+            .addField("Daily - Bal - Send 💰", "Economy commands, ?send @user 100/?daily/?bal")
             .setThumbnail(message.author.avatarURL)
             .setFooter("Server: " + `${message.guild.name}`, message.guild.iconURL);
                message.author.send({ embed });
@@ -36,6 +37,6 @@ exports.run = (inv, message, args) => {
               .setFooter("Server: " + `${message.guild.name}`, message.guild.iconURL);
             message.channel.send({ embed: cembed });
             let extra = new Discord.RichEmbed()
-            .addField("For more info on commands, type ?commands", "<:staff:474743393658863626>")
+            .addField("<:staff:474743393658863626>", "Developed by Alphi#9839")
             message.channel.send(extra)
   }
