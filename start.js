@@ -20,6 +20,25 @@ const defaultSettings = {
   welcomeChannel: "welcome",
   welcomeMessage: "Welcome {{user}} to the server! Emjoy your stay!! :3"
 }
+inv.on('guildMemberAdd', async member => {
+  let channel = inv.channels.get("478411912892252166") //ez nou
+  channel.send(`:Karma: What goes around, must come back around. :Karma: \n Hey!  ${member.toString()} Welcome to Karma. Please read <#335251583233294346>. \n Karma is now recruiting for dedicated players to blow through the game. Help us grow stronger and your karma will be served. \n May your blade run red with the blood of our enemies \n Please type *agree* in <#478411912892252166>`)
+  
+
+
+        return mg.author.id === member.id;
+    }, {max: 1})
+    response = response.array()[0];
+
+ if (response.content.toLowerCase() === "agree"){
+        let role = member.guild.roles.find(role => {return role.id==="466316850737709057"});
+        member.addRole(role);
+        welcome.send("You now have access to the server, welcome to Karma <:hype:468081845787951106> and most importantly, enjoy your stay!!");
+    }
+    else{
+        welcome.send("You did not meet the requirements, please contact an admin or try again.");
+    }
+  });
 inv.on("guildCreate", guild => {
   inv.settings.set(guild.id, defaultSettings);
 });
