@@ -33,10 +33,10 @@ inv.on('guildMemberAdd', async member => {
  if (response.content.toLowerCase() === "agree"){
         let role = member.guild.roles.find(role => {return role.id==="473723745471692801"});
         member.addRole(role);
-        welcome.send("You now have access to the server, welcome to Karma <:hype:468081845787951106> and most importantly, enjoy your stay!!");
+        channel.send("You now have access to the server, welcome to Karma <:hype:468081845787951106> and most importantly, enjoy your stay!!");
     }
     else{
-        welcome.send("You did not meet the requirements, please contact an admin or try again.");
+        channel.send("You did not meet the requirements, please contact an admin or try again.");
     }
   });
 inv.on("guildCreate", guild => {
